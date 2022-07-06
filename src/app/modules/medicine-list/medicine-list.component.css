@@ -1,0 +1,7 @@
+td,th{
+    text-align: center
+}
+.active {
+    background-color: #666;
+    color: white;
+  }

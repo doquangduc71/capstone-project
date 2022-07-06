@@ -1,0 +1,25 @@
+
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+            <h2>ADMIN</h2>
+            <h4>{{admin?.fullName}}</h4>
+        </div>
+        <img src="assets/img/admin-image.png" alt="ADMIN IMAGE">
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Quản Lý</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">Dashboard</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/doctor-list">Bác sĩ</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/patient-list">Bệnh nhân</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/medicine-list">Danh sách thuốc</a>
+    
+
+    <mat-divider></mat-divider>
+
+    
+
+</mat-nav-list>

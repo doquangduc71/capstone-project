@@ -1,0 +1,223 @@
+
+<div class="container emp-profile">
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{doctor?.imageUrl?doctor?.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                            <h2 >
+                                {{doctor?.fullName}}
+                            </h2>
+                            <h4>
+                                {{doctor?.specialty}}
+                            </h4>
+                            <p class="proile-rating">RATTING : <span>{{doctor?.rating}}/5</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <mat-tab-group dynamicHeight mat-align-tabs="start">
+                            <mat-tab label="About"> 
+                                <div class="tab-pane fade show active mt-4" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">User Id</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.id}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Name</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.fullName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">DOB</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.dob}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Gender</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p *ngIf="doctor?.gender==1;else elseBlock">Nữ</p>
+                                            <ng-template #elseBlock><p>Nam</p></ng-template>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Position</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.position}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Email</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.email}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Phone</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.phone}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Specialty</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.specialty}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Job Place</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.jobPlace}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Identification Front</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{{doctor?.identificationFront?doctor?.identificationFront:''}}" target="_blank">Show</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Identification Back</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{{doctor?.identificationBack?doctor?.identificationBack:''}}" target="_blank">Show</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Signature</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{{doctor?.signature?doctor?.signature:''}}" target="_blank">Show</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Certificate</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{{doctor?.certificate?doctor?.certificate:''}}" target="_blank">Show</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Expire Date Certificate</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" id="expireDate" name="expireDate" value="{{doctor?.expireDateCertificate}}"/>
+                                        </div>
+                                    </div>
+                                   
+                                    
+                        </div>
+                            </mat-tab>
+                            <mat-tab label="Timeline"> 
+                                <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">List Specialty</label>
+                                        </div>
+                                        <div >
+                                            <div class="col-md-13" *ngFor="let s of doctor?.listSpecialty">
+                                                <p>{{s?.name}},</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">List Experience</label>
+                                        </div>
+                                        <div >
+                                            <div class="col-md-13" *ngFor="let e of doctor?.listExperience">
+                                                <p>{{e?.experience}},</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">List Achievement</label>
+                                        </div>
+                                        <div >
+                                            <div class="col-md-13" *ngFor="let a of doctor?.listAchievement">
+                                                <p>{{a?.achievement}},</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Appointment Done Count</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.appointmentDoneCount}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Patient Count</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor?.patientCount}}</p>
+                                        </div>
+                                    </div>
+                                   
+                           
+                        </div > 
+                                
+                            </mat-tab>
+                            
+                          </mat-tab-group>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div *ngFor="let s of status" >
+                    <div *ngIf="doctor?.isActive==s.id" >
+                        <button (click)="changeStatus()" class="profile-edit-btn" name="btn{{s.value}}" id="btn{{s.value}}">{{s?.value}}</button>
+                    </div>
+                    
+                </div>
+                
+                
+                
+            </div>
+            <div class="col-md-2">
+                <a routerLink="/home/doctor-list"><i class="fa fa-chevron-left"></i> Back to Doctor List</a>
+                
+            </div>
+        </div>
+        
+        
+</div>
