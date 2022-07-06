@@ -13,7 +13,8 @@ import { User } from '../model/user';
 })
 export class UserService {
   private header: any;
-  private baseUrl= environment.apiBaseurl;
+  private baseUrl= "http://localhost:8080/api/v1";
+  
   constructor(private httpClient: HttpClient) { 
     this.header = new Headers( {'Content-Type' : 'application/context'})
   }

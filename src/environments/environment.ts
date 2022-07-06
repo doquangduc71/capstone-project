@@ -5,6 +5,6 @@
 export const environment = {
   production: false,
   //apiBaseurl:"https://telecare-doxr4lwcja-as.a.run.app/api/v1",
-  apiBaseurl:"http://localhost:8080/api/v1",
+  
 };
 
