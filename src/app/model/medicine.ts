@@ -6,5 +6,6 @@ export class Medicine {
     company:string;
     advertisingType:string;
     registrationNumber:string;
+    status:number;
 
 }

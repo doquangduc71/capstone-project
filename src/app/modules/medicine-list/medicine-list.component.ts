@@ -12,31 +12,27 @@ import { UserService } from 'src/app/services/user.service';
 export class MedicineListComponent implements OnInit {
   indexPagination: number = 1;
   totalPagination: number;
-  
-  public searchVaccine: FormGroup;
+  searchText:string="";
+
   medicines: Medicine[] = [];
   numberOfMedicine:number;
   constructor(private medicineService: UserService) { }
 
   ngOnInit(): void {
-    this.medicineService.getMedicineList(0).subscribe((data: Medicine[]) => {
+    this.medicineService.getMedicineList(0,this.searchText).subscribe((data: Medicine[]) => {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
       alert(error.message);
     });
-    this.searchVaccine = new FormGroup({
-      nameVaccine: new FormControl(''),
-      typeVaccine: new FormControl(''),
-      originVaccine: new FormControl(''),
-      statusVaccine: new FormControl('')
-    });
-    this.medicineService.getNumberOfMedicine().subscribe((data: number) => {
+    
+    this.medicineService.getNumberOfMedicine(this.searchText).subscribe((data: number) => {
       this.numberOfMedicine = data;
-      if ((this.numberOfMedicine % 50) != 0) {
+      if ((this.numberOfMedicine % 50) != 0 || this.numberOfMedicine==0) {
         this.totalPagination = (Math.floor(this.numberOfMedicine / 50)) + 1;
        
       }
+      
     },
     (error:HttpErrorResponse)=>{
       alert(error.message);
@@ -45,7 +41,7 @@ export class MedicineListComponent implements OnInit {
   }
   indexPaginationChange(value: number) {
     this.indexPagination = value;
-    this.medicineService.getMedicineList((this.indexPagination * 50) - 50).subscribe((data: Medicine[]) => {
+    this.medicineService.getMedicineList((this.indexPagination * 50) - 50,this.searchText).subscribe((data: Medicine[]) => {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
@@ -54,8 +50,11 @@ export class MedicineListComponent implements OnInit {
   }
 
   firstPage() {
+    if(this.totalPagination==0){
+      return;
+    }
     this.indexPagination = 1;
-    this.medicineService.getMedicineList((this.indexPagination * 50) - 50).subscribe((data: Medicine[]) => {
+    this.medicineService.getMedicineList((this.indexPagination * 50) - 50,this.searchText).subscribe((data: Medicine[]) => {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
@@ -64,13 +63,16 @@ export class MedicineListComponent implements OnInit {
   }
 
   nextPage() {
+    if(this.totalPagination==0){
+      return;
+    }
     this.indexPagination = this.indexPagination + 1;
     console.log(this.indexPagination);
     if (this.indexPagination > this.totalPagination) {
       this.indexPagination = this.indexPagination - 1;
     }
     
-    this.medicineService.getMedicineList((this.indexPagination * 50) - 50).subscribe((data: Medicine[]) => {
+    this.medicineService.getMedicineList((this.indexPagination * 50) - 50,this.searchText).subscribe((data: Medicine[]) => {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
@@ -79,12 +81,15 @@ export class MedicineListComponent implements OnInit {
   }
 
   prviousPage() {
+    if(this.totalPagination==0){
+      return;
+    }
     this.indexPagination = this.indexPagination - 1;
     if (this.indexPagination == 0) {
       this.indexPagination = 1;
       this.ngOnInit();
     } else {
-      this.medicineService.getMedicineList((this.indexPagination * 50) - 50).subscribe((data: Medicine[]) => {
+      this.medicineService.getMedicineList((this.indexPagination * 50) - 50,this.searchText).subscribe((data: Medicine[]) => {
         this.medicines = data;
       }),
       (error:HttpErrorResponse)=>{
@@ -94,13 +99,22 @@ export class MedicineListComponent implements OnInit {
   }
 
   lastPage() {
+    if(this.totalPagination==0){
+      return;
+    }
     this.indexPagination = this.totalPagination;
-    this.medicineService.getMedicineList((this.indexPagination * 50) - 50).subscribe((data: Medicine[]) => {
+    this.medicineService.getMedicineList((this.indexPagination * 50) - 50,this.searchText).subscribe((data: Medicine[]) => {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
       alert(error.message);
     })
+  }
+  search(){
+    this.indexPagination=1;
+    this.searchText=(<HTMLInputElement>document.getElementById("searchText")).value;
+    
+    this.ngOnInit();
   }
 
 }

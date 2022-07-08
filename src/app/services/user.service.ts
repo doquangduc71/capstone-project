@@ -13,20 +13,21 @@ import { User } from '../model/user';
 })
 export class UserService {
   private header: any;
-  private baseUrl= "https://telecare-doxr4lwcja-as.a.run.app/api/v1";
+  //private baseUrl= "http://localhost:8080/api/v1";
+  private baseUrl = "https://telecare-doxr4lwcja-as.a.run.app/api/v1";
   
   constructor(private httpClient: HttpClient) { 
     this.header = new Headers( {'Content-Type' : 'application/context'})
   }
   
-  getMedicineList(index:number):Observable<Medicine[]>{
-    return this.httpClient.get<Medicine[]>(`${this.baseUrl}/medicines?index=${index}`);
+  getMedicineList(index:number,searchText:string):Observable<Medicine[]>{
+    return this.httpClient.get<Medicine[]>(`${this.baseUrl}/medicine/getAll?index=${index}&searchText=${searchText}`);
   }
   getDoctorById(id:number):Observable<Doctor>{
     return this.httpClient.get<Doctor>(`${this.baseUrl}/doctor/${id}`);
   }
-  getNumberOfMedicine():Observable<number>{
-    return this.httpClient.get<number>(`${this.baseUrl}/numberOfMedicine`);
+  getNumberOfMedicine(searchText:string):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseUrl}/medicine/numberOfMedicine?searchText=${searchText}`);
   }
   getDoctorList(index:number,searchText:string):Observable<Doctor[]>{
     return this.httpClient.get<Doctor[]>(`${this.baseUrl}/doctor?index=${index}&searchText=${searchText}`);

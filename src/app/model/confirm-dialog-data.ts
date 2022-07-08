@@ -3,4 +3,5 @@ export interface ConfirmDialogData {
     message: string;
     confirmCaption: string;
     cancelCaption: string;
+    type:string;
   }

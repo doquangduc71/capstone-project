@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
       message: 'Bạn muốn thực hiện hành động này chứ?',
       confirmCaption: 'Xác nhận',
       cancelCaption: 'Hủy',
+      type:"confirm"
     }).subscribe((confirmed) => {
       if (confirmed){
         localStorage.removeItem('userToken');

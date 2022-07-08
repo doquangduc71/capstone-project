@@ -38,10 +38,16 @@ export class DoctorListComponent implements OnInit {
    
     this.doctorService.getNumberOfDoctor(this.searchText).subscribe((data: number) => {
       this.numberOfDoctor = data;
-      if ((this.numberOfDoctor % 5) != 0) {
-        this.totalPagination = (Math.floor(this.numberOfDoctor / 5)) + 1;
+      if ((this.numberOfDoctor % 10) != 0) {
+        this.totalPagination = (Math.floor(this.numberOfDoctor / 10)) + 1;
+        this.numbersPage = Array(this.totalPagination).fill(1).map((x, i) => i + 1);
+      }else{
+        this.totalPagination = (Math.floor(this.numberOfDoctor / 10));
         this.numbersPage = Array(this.totalPagination).fill(1).map((x, i) => i + 1);
       }
+      console.log(this.totalPagination);
+     
+      
     },
     (error:HttpErrorResponse)=>{
       alert(error.message);
@@ -49,7 +55,7 @@ export class DoctorListComponent implements OnInit {
   }
   indexPaginationChage(value: number) {
     this.indexPagination = value;
-    this.doctorService.getDoctorList((this.indexPagination * 5) - 5,this.searchText).subscribe((data: Doctor[]) => {
+    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
@@ -58,8 +64,11 @@ export class DoctorListComponent implements OnInit {
   }
 
   firstPage() {
+    if(this.totalPagination==0){
+      return;
+    }
     this.indexPagination = 1;
-    this.doctorService.getDoctorList((this.indexPagination * 5) - 5,this.searchText).subscribe((data: Doctor[]) => {
+    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
@@ -68,13 +77,16 @@ export class DoctorListComponent implements OnInit {
   }
 
   nextPage() {
+    if(this.totalPagination==0){
+      return;
+    }
     this.indexPagination = this.indexPagination + 1;
-    console.log(this.indexPagination);
+    
     if (this.indexPagination > this.totalPagination) {
       this.indexPagination = this.indexPagination - 1;
     }
     
-    this.doctorService.getDoctorList((this.indexPagination * 5) - 5,this.searchText).subscribe((data: Doctor[]) => {
+    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
@@ -83,12 +95,15 @@ export class DoctorListComponent implements OnInit {
   }
 
   prviousPage() {
+    if(this.totalPagination==0){
+      return;
+    }
     this.indexPagination = this.indexPagination - 1;
     if (this.indexPagination == 0) {
       this.indexPagination = 1;
       this.ngOnInit();
     } else {
-      this.doctorService.getDoctorList((this.indexPagination * 5) - 5,this.searchText).subscribe((data: Doctor[]) => {
+      this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
         this.doctors = data;
       }),
       (error:HttpErrorResponse)=>{
@@ -98,8 +113,11 @@ export class DoctorListComponent implements OnInit {
   }
 
   lastPage() {
+    if(this.totalPagination==0){
+      return;
+    }
     this.indexPagination = this.totalPagination;
-    this.doctorService.getDoctorList((this.indexPagination * 5) - 5,this.searchText).subscribe((data: Doctor[]) => {
+    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
@@ -112,7 +130,7 @@ export class DoctorListComponent implements OnInit {
   }
   search(){
     this.searchText=(<HTMLInputElement>document.getElementById("searchText")).value;
-    console.log(this.searchText);
+    
     this.ngOnInit();
   }
 

@@ -2,48 +2,25 @@
   <div>
     <h2 style="text-align: center">Danh Sách Thuốc</h2>
   </div>
-  <!-- <div class="container-fluid">
-    <form [formGroup]="searchVaccine" >
-      <div class=" search row d-flex justify-content-md-end mb-4 text-right float-right">
-      
-        <div lass="col-xl-2 col-md-3 form-group" style="text-align: center">
-          <label for="nameVaccine">Tên vắc-xin</label>
-          <input id="nameVaccine" class="form-control" type="text" formControlName="nameVaccine">
-        </div>
-        <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
-          <div cstyle="text-align: center">
-            <label for="typeVaccine">Loại Vắc-xin</label>
-          </div>
-          <div>
-            <input type="text" id="typeVaccine" class="form-control" formControlName="typeVaccine">
-          </div>
-        </div>
-        <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
-          <div style="text-align: center">
-            <label for="provider">Nước Sản Xuất</label>
-          </div>
-          <div>
-            <input type="text" id="provider" class="form-control" formControlName="originVaccine">
-          </div>
-        </div>
-        <div class="col-xl-2 col-md-3 form-group" style="text-align: right">
-          <label for="status">Tình trạng vắc-xin</label>
-          <select id="status" class="form-control" formControlName="statusVaccine">
-            <option [value]="'con'">Còn</option>
-            <option [value]="'het'">Hết</option>
-          </select>
-        </div>
-        <div class="col-xl-2 col-4" style="text-align: right">
-          <br>
-          <button class="btn btn-success mt-xl-2"><i class="fa fa-search"></i>Tìm Kiếm</button>
-        </div>
+  <div class="container-fluid">
+  
+    <div class=" search  d-flex justify-content-md-end mb-4 text-right float-right">
+     
+      <div class="col-xl-12 col-md-6 form-group" style="text-align: center">
+        <label for="searchText"></label>
+        <input id="searchText" value="{{searchText}}" name="searchText" placeholder="Tìm kiếm..." class="form-control" type="text">
       </div>
-    </form>
-  </div> -->
-  <div class="container mt-0">
-    <button class="btn btn-success mt-2 mb-md-3" routerLink="/vaccine-create"><i class="fa fa-plus"></i> Thêm Thuốc
-    </button>
-  </div>
+      
+      
+      
+      <div class="col-xl-5 col-0" style="text-align: left">
+        <br>
+        <button (click)="search()" class="btn btn-success mt-xl-0"><i class="fa fa-search" ></i>Tìm Kiếm</button>
+      </div>
+    </div>
+  
+</div>
+  
 
   
   <div class="container tab">
@@ -57,22 +34,26 @@
         <th scope="col" width="10%">Năm Tiếp Nhận</th>
         <th scope="col" width="13%">Số Giấy Tiếp Nhận</th>
         <th scope="col">Số Đăng Kí</th>
+        <th scope="col" width="15%">Trạng Thái</th>
 
       </tr>
       </thead>
       <tbody style="font-size: 16px">
-      <tr *ngFor="let vaccine of medicines">
-        <td >{{vaccine.id}}</td>
+      <tr *ngFor="let vaccine of medicines,index as i">
+        <td >{{i + 1}}</td>
         <td >{{vaccine.name}}</td>
         <td >{{vaccine.company}}</td>
         <td>{{vaccine.yearOfReceipts}}</td>
         <td >{{vaccine.numberOfReceipts}}</td>
         <td >{{vaccine.registrationNumber}}</td>
+        <td  ><span *ngIf="vaccine?.status==1">Ngưng </span>Lưu Hành</td>
+        
   
         
       </tr>
       </tbody>
     </table>
+    <div *ngIf="numberOfMedicine==0" class="d-flex justify-content-center">Không tìm thấy thuốc</div>
   </div>
 
   <!--    phân trang-->

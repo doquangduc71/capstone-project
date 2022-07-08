@@ -43,12 +43,13 @@ export class DoctorDetailsComponent implements OnInit {
       message: 'Bạn muốn thực hiện hành động này chứ?',
       confirmCaption: 'Xác nhận',
       cancelCaption: 'Hủy',
+      type:"confirm"
     }).subscribe((confirmed) => {
       if (confirmed){
         this.expireDate= (<HTMLInputElement>document.getElementById("expireDate")).value;
           if(this.expireDate==""){
-            alert("Set Expire Date Certificate");
-            console.log(this.expireDate);
+            this.openAlertDialog();
+            
             return;
           }
         if (this.doctor.isActive == 0) {
@@ -81,6 +82,17 @@ export class DoctorDetailsComponent implements OnInit {
 
       });
 
+  }
+  openAlertDialog(){
+    this.dialog.confirmDialog({
+      title: 'Thông báo',
+      message: 'Cần thiết lập ngày hết hạn chứng chỉ',
+      confirmCaption: 'OK',
+      cancelCaption: 'Hủy',
+      type:"alert"
+    }).subscribe((ok)=>{
+      return;
+    });
   }
 
 }
