@@ -1,24 +1,24 @@
 
 <div class="container emp-profile">
-    <p class="text-dark mb-4" *ngIf="doctor?.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{doctor?.reason}}</span></p>
+    <p class="text-dark mb-4" *ngIf="patient?.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{patient?.reason}}</span></p>
     <app-spinner *ngIf="loading$ | async"></app-spinner>
     
         <div class="row">
             
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="{{doctor?.imageUrl?doctor?.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
+                    <img src="{{patient?.imageUrl?patient?.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                             <h2 >
-                                {{doctor?.fullName}}
+                                {{patient?.fullName}}
                             </h2>
-                            <h4>
-                                {{doctor?.specialty}}
-                            </h4>
-                            <p class="proile-rating">RATTING : <span>{{doctor?.rating}}/5</span></p>
+                            <!-- <h4>
+                                {{patient?.specialty}}
+                            </h4> -->
+                            <!-- <p class="proile-rating">RATTING : <span>{{patient?.rating}}/5</span></p> -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <mat-tab-group dynamicHeight mat-align-tabs="start">
                             <mat-tab label="About"> 
@@ -28,7 +28,7 @@
                                             <label style="font-weight:500;">User Id</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.id}}</p>
+                                            <p>{{patient?.id}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -36,7 +36,7 @@
                                             <label style="font-weight:500;">Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.fullName}}</p>
+                                            <p>{{patient?.fullName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -44,7 +44,7 @@
                                             <label style="font-weight:500;">DOB</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.dob}}</p>
+                                            <p>{{patient?.dob}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -52,24 +52,17 @@
                                             <label style="font-weight:500;">Gender</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p *ngIf="doctor?.gender==1;else elseBlock">Nữ</p>
+                                            <p *ngIf="patient?.gender==1;else elseBlock">Nữ</p>
                                             <ng-template #elseBlock><p>Nam</p></ng-template>
                                         </div>
                                     </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Position</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{doctor?.position}}</p>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row mt-2">
                                         <div class="col-md-6">
                                             <label style="font-weight:500;">Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.email}}</p>
+                                            <p>{{patient?.email}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -77,15 +70,15 @@
                                             <label style="font-weight:500;">Phone</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.phone}}</p>
+                                            <p>{{patient?.phone}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Specialty</label>
+                                            <label style="font-weight:500;">Job</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.specialty}}</p>
+                                            <p>{{patient?.job}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -93,49 +86,50 @@
                                             <label style="font-weight:500;">Job Place</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.jobPlace}}</p>
+                                            <p>{{patient?.jobPlace}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Identification Front</label>
+                                            <label style="font-weight:500;">Street Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="{{doctor?.identificationFront?doctor?.identificationFront:''}}" target="_blank">Show</a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Identification Back</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="{{doctor?.identificationBack?doctor?.identificationBack:''}}" target="_blank">Show</a>
+                                            <p>{{patient?.streetName}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Signature</label>
+                                            <label style="font-weight:500;">District Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="{{doctor?.signature?doctor?.signature:''}}" target="_blank">Show</a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Certificate</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="{{doctor?.certificate?doctor?.certificate:''}}" target="_blank">Show</a>
+                                            <p>{{patient?.districtName}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Expire Date Certificate</label>
+                                            <label style="font-weight:500;">Ward Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="date" id="expireDate" name="expireDate" value="{{doctor?.expireDateCertificate}}"/>
+                                            <p>{{patient?.wardName}}</p>
                                         </div>
                                     </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">City Name</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{patient?.cityName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Ethnic Name</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{patient?.ethnicName}}</p>
+                                        </div>
+                                    </div>
+                                    
                                    
                                     
                         </div>
@@ -144,55 +138,26 @@
                                 <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">List Specialty</label>
-                                        </div>
-                                        <div >
-                                            <div class="col-md-13" *ngFor="let s of doctor?.listSpecialty">
-                                                <p>{{s?.name}},</p>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">List Experience</label>
-                                        </div>
-                                        <div >
-                                            <div class="col-md-13" *ngFor="let e of doctor?.listExperience">
-                                                <p>{{e?.experience}},</p>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">List Achievement</label>
-                                        </div>
-                                        <div >
-                                            <div class="col-md-13" *ngFor="let a of doctor?.listAchievement">
-                                                <p>{{a?.achievement}},</p>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                    
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Appointment Done Count</label>
+                                            <label style="font-weight:500;">Weight</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.appointmentDoneCount}}</p>
+                                            <p>{{patient?.weight}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Patient Count</label>
+                                            <label style="font-weight:500;">Height</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.patientCount}}</p>
+                                            <p>{{patient?.height}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Blood Type</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{patient?.bloodType}}</p>
                                         </div>
                                     </div>
                                    
@@ -207,7 +172,7 @@
             </div>
             <div class="col-md-2">
                 <div *ngFor="let s of status" >
-                    <div *ngIf="doctor?.isActive==s.id" >
+                    <div *ngIf="patient?.isActive==s.id" >
                         <button (click)="changeStatus()" class="profile-edit-btn" name="btn{{s.value}}" id="btn{{s.value}}">{{s?.value}}</button>
                     </div>
                     
@@ -217,10 +182,11 @@
                 
             </div>
             <div class="col-md-2">
-                <a routerLink="/home/doctor-list"><i class="fa fa-chevron-left"></i> Back to Doctor List</a>
+                <a routerLink="/home/patient-list"><i class="fa fa-chevron-left"></i> Back to Patient List</a>
                 
             </div>
         </div>
         
         
 </div>
+

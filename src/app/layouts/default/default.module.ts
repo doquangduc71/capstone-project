@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { PatientListComponent } from 'src/app/modules/patient-list/patient-list.component';
+import { PatientDetailsComponent } from 'src/app/modules/patient-details/patient-details.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     DoctorListComponent,
     MedicineListComponent,
     DoctorDetailsComponent,
+    PatientListComponent,
+    PatientDetailsComponent
     
     
   ],

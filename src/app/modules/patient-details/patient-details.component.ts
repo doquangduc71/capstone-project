@@ -1,24 +1,22 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-
-import { Doctor } from 'src/app/model/doctor';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Patient } from 'src/app/model/patient';
 import { DialogService } from 'src/app/services/dialog.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { UserService } from 'src/app/services/user.service';
 import { ConfirmDialogComponent } from 'src/app/shared/component/confirm-dialog/confirm-dialog.component';
 
-
 @Component({
-  selector: 'app-doctor-details',
-  templateUrl: './doctor-details.component.html',
-  styleUrls: ['./doctor-details.component.css']
+  selector: 'app-patient-details',
+  templateUrl: './patient-details.component.html',
+  styleUrls: ['./patient-details.component.css']
 })
-export class DoctorDetailsComponent implements OnInit {
-  expireDate: string;
+export class PatientDetailsComponent implements OnInit {
+  
   loading$ = this.loader.loading$;
-  doctor: Doctor;
+  patient: Patient;
   reason: string;
   status = [
     { id: 0, value: 'Active' },
@@ -29,27 +27,22 @@ export class DoctorDetailsComponent implements OnInit {
   constructor(public loader: LoadingService, private route: ActivatedRoute, private doctorService: UserService, private router: Router, private dialog: DialogService, private banDialog: MatDialog) { }
 
   ngOnInit(): void {
-    const doctorId = Number(this.route.snapshot.paramMap.get('id'));
-    this.doctorService.getDoctorById(doctorId).subscribe((data: Doctor) => {
-      this.doctor = data;
+    const patientId = Number(this.route.snapshot.paramMap.get('id'));
+    this.doctorService.getPatientById(patientId).subscribe((data: Patient) => {
+      this.patient = data;
 
 
     },
       (error: HttpErrorResponse) => {
         alert(error.error.message);
-        this.router.navigateByUrl("/home/doctor-list");
+        this.router.navigateByUrl("/home/patient-list");
 
       });
 
   }
   changeStatus() {
-    this.expireDate = (<HTMLInputElement>document.getElementById("expireDate")).value;
-    if (this.expireDate == "") {
-      this.openAlertDialog('Cần thiết lập ngày hết hạn chứng chỉ');
-
-      return;
-    }
-    if (this.doctor.isActive == 1) {
+    
+    if (this.patient.isActive == 1) {
      
       let dialogRef = this.banDialog.open(ConfirmDialogComponent, {
         data: {
@@ -73,7 +66,7 @@ export class DoctorDetailsComponent implements OnInit {
         } else if (result != false) {
           
           
-          this.updateStatusDoctor(2, this.doctor.id,result.trim());
+          this.updateStatusPatient(2, this.patient.id,result.trim());
         }
         
           
@@ -90,18 +83,18 @@ export class DoctorDetailsComponent implements OnInit {
       }).subscribe((confirmed) => {
         if (confirmed) {
 
-          if (this.doctor.isActive == 0) {
+          if (this.patient.isActive == 0) {
 
-            this.updateStatusDoctor(1, this.doctor.id,"");
+            this.updateStatusPatient(1, this.patient.id,"");
 
-          } else if (this.doctor.isActive == 1) {
+          } else if (this.patient.isActive == 1) {
 
 
 
-            this.updateStatusDoctor(2, this.doctor.id,"");
+            this.updateStatusPatient(2, this.patient.id,"");
 
-          } else if (this.doctor.isActive == 2) {
-            this.updateStatusDoctor(1, this.doctor.id,"");
+          } else if (this.patient.isActive == 2) {
+            this.updateStatusPatient(1, this.patient.id,"");
 
           }
         }
@@ -111,10 +104,10 @@ export class DoctorDetailsComponent implements OnInit {
 
     
   }
-  updateStatusDoctor(isActive: number, id: number,reason:string) {
-    this.doctorService.updateStatus(isActive, id, this.expireDate,reason).subscribe((data: any) => {
+  updateStatusPatient(isActive: number, id: number,reason:string) {
+    this.doctorService.updateStatusForPatient(isActive, id,reason).subscribe((data: any) => {
       
-      this.doctor.isActive = isActive;
+      this.patient.isActive = isActive;
       this.ngOnInit();
       
     },

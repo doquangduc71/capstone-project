@@ -15,6 +15,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { SpinnerComponent } from './shared/component/spinner/spinner.component';
 import { SharedModule } from './shared/shared.module';
+import { PatientListComponent } from './modules/patient-list/patient-list.component';
+import { PatientDetailsComponent } from './modules/patient-details/patient-details.component';
 
 
 
@@ -24,6 +26,8 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     LoginComponent,
+    
+    
 
     
     

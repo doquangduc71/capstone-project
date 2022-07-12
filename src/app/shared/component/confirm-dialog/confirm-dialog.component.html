@@ -9,11 +9,18 @@
     <p>{{data.message}}</p>
 </div>
 
+<input  id="reason" class="form-control form-control-sm border border-primary" *ngIf="data.type=='confirmBan'" name="reason" [(ngModel)]="data.reason" placeholder="Điền lý do ban"/>
 <div mat-dialog-actions [align]="'end'">
     <button *ngIf="data.type=='confirm'" mat-raised-button [mat-dialog-close]="false">
         {{data.cancelCaption}}
     </button>
-    <button  mat-raised-button color="primary" [mat-dialog-close]="true">
+    <button *ngIf="data.type=='confirm' || data.type=='alert'"  mat-raised-button color="primary" [mat-dialog-close]="true">
+        {{data.confirmCaption}}
+    </button>
+    <button mat-raised-button *ngIf="data.type=='confirmBan'" [mat-dialog-close]="false">
+        {{data.cancelCaption}}
+    </button>
+    <button  mat-raised-button  *ngIf="data.type=='confirmBan'" color="primary" [mat-dialog-close]="data.reason">
         {{data.confirmCaption}}
     </button>
 </div>

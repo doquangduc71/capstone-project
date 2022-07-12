@@ -9,14 +9,17 @@ import { ConfirmDialogComponent } from '../shared/component/confirm-dialog/confi
 export class DialogService {
 
   constructor(private dialog: MatDialog) {}
-
+  
   confirmDialog(data: ConfirmDialogData): Observable<boolean> {
+    
     return this.dialog
       .open(ConfirmDialogComponent, {
         data,
         width: '400px',
         disableClose: true,
+        
       })
       .afterClosed();
   }
+  
 }

@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Admin } from '../model/admin';
 import { Doctor } from '../model/doctor';
 import { Medicine } from '../model/medicine';
+import { Patient } from '../model/patient';
 import { User } from '../model/user';
 
 @Injectable({
@@ -26,6 +27,9 @@ export class UserService {
   getDoctorById(id:number):Observable<Doctor>{
     return this.httpClient.get<Doctor>(`${this.baseUrl}/doctor/${id}`);
   }
+  getPatientById(id:number):Observable<Patient>{
+    return this.httpClient.get<Patient>(`${this.baseUrl}/patient?id=${id}`);
+  }
   getNumberOfMedicine(searchText:string):Observable<number>{
     return this.httpClient.get<number>(`${this.baseUrl}/medicine/numberOfMedicine?searchText=${searchText}`);
   }
@@ -35,12 +39,21 @@ export class UserService {
   getNumberOfDoctor(searchText:string):Observable<number>{
     return this.httpClient.get<number>(`${this.baseUrl}/doctor/numberOfDoctor?searchText=${searchText}`);
   }
+  getPatientList(index:number,searchText:string):Observable<Patient[]>{
+    return this.httpClient.get<Patient[]>(`${this.baseUrl}/patient/getAll?index=${index}&searchText=${searchText}`);
+  }
+  getNumberOfPatient(searchText:string):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseUrl}/patient/numberOfPatient?searchText=${searchText}`);
+  }
   login(formData:FormGroup) {
     
     return this.httpClient.post(`${this.baseUrl}/auth/loginForAdmin`,formData);
   }
-  updateStatus(isActive:number,id:number,expireDate:any){
-    return this.httpClient.put(`${this.baseUrl}/user/updateStatus?isActive=${isActive}&id=${id}&expireDate=${expireDate}`,isActive&id&expireDate);
+  updateStatus(isActive:number,id:number,expireDate:any,reason:any){
+    return this.httpClient.put(`${this.baseUrl}/user/updateStatus?isActive=${isActive}&id=${id}&expireDate=${expireDate}&reason=${reason}`,isActive&id&expireDate&reason);
+  }
+  updateStatusForPatient(isActive:number,id:number,reason:any){
+    return this.httpClient.put(`${this.baseUrl}/user/updateStatusForPatient?isActive=${isActive}&id=${id}&reason=${reason}`,isActive&id&reason);
   }
   getAdminInfor(id:number){
     return this.httpClient.get<Admin>(`${this.baseUrl}/user/${id}`);

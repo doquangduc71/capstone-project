@@ -3,5 +3,6 @@ export interface ConfirmDialogData {
     message: string;
     confirmCaption: string;
     cancelCaption: string;
+    reason:string;
     type:string;
   }

@@ -25,5 +25,6 @@ export class Doctor {
     identificationFront:string;
     identificationBack:string;
     expireDateCertificate:Date;
+    reason:string;
 
 }

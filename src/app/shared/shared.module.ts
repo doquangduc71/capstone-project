@@ -15,6 +15,7 @@ import { ConfirmDialogComponent } from './component/confirm-dialog/confirm-dialo
 import {MatDialogModule} from '@angular/material/dialog';
 import { SpinnerComponent } from './component/spinner/spinner.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -34,7 +35,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatListModule,
     RouterModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FormsModule
 
     
   ],
