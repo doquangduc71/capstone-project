@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
     
     },
     (error:HttpErrorResponse)=>{
-     alert(error.message); 
+      console.log(error.message); 
      
 
     });

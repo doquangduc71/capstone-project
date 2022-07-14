@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
@@ -7,11 +8,11 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent implements OnInit {
-  loading$ = this.loader.loading$;
+  loading$ = this.loader.loading$
   constructor(public loader: LoadingService) { }
 
   ngOnInit(): void {
-    
+     
   }
 
 }

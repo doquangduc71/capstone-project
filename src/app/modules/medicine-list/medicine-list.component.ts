@@ -23,7 +23,7 @@ export class MedicineListComponent implements OnInit {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     });
     
     this.medicineService.getNumberOfMedicine(this.searchText).subscribe((data: number) => {
@@ -35,7 +35,7 @@ export class MedicineListComponent implements OnInit {
       
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     });
     
   }
@@ -45,7 +45,7 @@ export class MedicineListComponent implements OnInit {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -58,7 +58,7 @@ export class MedicineListComponent implements OnInit {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -76,7 +76,7 @@ export class MedicineListComponent implements OnInit {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -93,7 +93,7 @@ export class MedicineListComponent implements OnInit {
         this.medicines = data;
       }),
       (error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     }
   }
@@ -107,7 +107,7 @@ export class MedicineListComponent implements OnInit {
       this.medicines = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
   search(){

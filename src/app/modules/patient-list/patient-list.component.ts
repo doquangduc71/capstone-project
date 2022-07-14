@@ -33,7 +33,7 @@ export class PatientListComponent implements OnInit {
       this.patients = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     });
    
     this.patientService.getNumberOfPatient(this.searchText).subscribe((data: number) => {
@@ -45,12 +45,12 @@ export class PatientListComponent implements OnInit {
         this.totalPagination = (Math.floor(this.numberOfPatient / 10));
         this.numbersPage = Array(this.totalPagination).fill(1).map((x, i) => i + 1);
       }
-      console.log(this.totalPagination);
+      
      
       
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     });
   }
   indexPaginationChage(value: number) {
@@ -59,7 +59,7 @@ export class PatientListComponent implements OnInit {
       this.patients = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -72,7 +72,7 @@ export class PatientListComponent implements OnInit {
       this.patients = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -90,7 +90,7 @@ export class PatientListComponent implements OnInit {
       this.patients = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -107,7 +107,7 @@ export class PatientListComponent implements OnInit {
         this.patients = data;
       }),
       (error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     }
   }
@@ -121,7 +121,7 @@ export class PatientListComponent implements OnInit {
       this.patients = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
   navigateToProfile(id:number){

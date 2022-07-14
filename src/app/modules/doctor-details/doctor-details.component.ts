@@ -36,7 +36,7 @@ export class DoctorDetailsComponent implements OnInit {
 
     },
       (error: HttpErrorResponse) => {
-        alert(error.error.message);
+        console.log(error.error.message);
         this.router.navigateByUrl("/home/doctor-list");
 
       });
@@ -119,7 +119,7 @@ export class DoctorDetailsComponent implements OnInit {
       
     },
       (error: HttpErrorResponse) => {
-        alert(error.error.message);
+        console.log(error.error.message);
 
 
       });

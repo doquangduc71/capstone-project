@@ -29,8 +29,7 @@ export class HeaderComponent implements OnInit {
       type:"confirm"
     }).subscribe((confirmed) => {
       if (confirmed){
-        localStorage.removeItem('userToken');
-        localStorage.removeItem('userId');
+        localStorage.clear();
         this.router.navigateByUrl('/login');
       }
     });

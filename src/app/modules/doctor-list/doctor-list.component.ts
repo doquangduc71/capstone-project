@@ -33,7 +33,7 @@ export class DoctorListComponent implements OnInit {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     });
    
     this.doctorService.getNumberOfDoctor(this.searchText).subscribe((data: number) => {
@@ -45,12 +45,12 @@ export class DoctorListComponent implements OnInit {
         this.totalPagination = (Math.floor(this.numberOfDoctor / 10));
         this.numbersPage = Array(this.totalPagination).fill(1).map((x, i) => i + 1);
       }
-      console.log(this.totalPagination);
+      
      
       
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     });
   }
   indexPaginationChage(value: number) {
@@ -59,7 +59,7 @@ export class DoctorListComponent implements OnInit {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -72,7 +72,7 @@ export class DoctorListComponent implements OnInit {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -90,7 +90,7 @@ export class DoctorListComponent implements OnInit {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
 
@@ -107,7 +107,7 @@ export class DoctorListComponent implements OnInit {
         this.doctors = data;
       }),
       (error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     }
   }
@@ -121,7 +121,7 @@ export class DoctorListComponent implements OnInit {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log(error.message);
     })
   }
   navigateToProfile(id:number){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
@@ -7,11 +8,12 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./default.component.css']
 })
 export class DefaultComponent implements OnInit {
-  loading$ = this.loader.loading$;
+  
   sideBarOpen = true;
   constructor(public loader: LoadingService) { }
-
+  loading$: Observable<Boolean>
   ngOnInit(): void {
+    this.loading$ = this.loader.loading$;
   }
   sideBarToggler(){
     this.sideBarOpen = !this.sideBarOpen;
