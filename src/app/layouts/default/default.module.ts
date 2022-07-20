@@ -15,6 +15,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { PatientListComponent } from 'src/app/modules/patient-list/patient-list.component';
 import { PatientDetailsComponent } from 'src/app/modules/patient-details/patient-details.component';
+import { AppointmentListComponent } from 'src/app/modules/appointment-list/appointment-list.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PatientDetailsComponent } from 'src/app/modules/patient-details/patient
     MedicineListComponent,
     DoctorDetailsComponent,
     PatientListComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
+    AppointmentListComponent,
     
     
   ],

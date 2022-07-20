@@ -36,7 +36,7 @@ export class DoctorDetailsComponent implements OnInit {
 
     },
       (error: HttpErrorResponse) => {
-        console.log(error.error.message);
+        
         this.router.navigateByUrl("/home/doctor-list");
 
       });

@@ -4,6 +4,7 @@ import { AuthGuard } from './auth/auth.guard';
 
 import { DefaultComponent } from './layouts/default/default.component';
 import { LoginComponent } from './layouts/login/login.component';
+import { AppointmentListComponent } from './modules/appointment-list/appointment-list.component';
 
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DoctorDetailsComponent } from './modules/doctor-details/doctor-details.component';
@@ -19,16 +20,19 @@ children:[
   { path:'doctor-list',
   children:[
     {path:'',component:DoctorListComponent},
-    {path:':id',component:DoctorDetailsComponent}
+    {path:':id',component:DoctorDetailsComponent},
+    
   ]
 },
 { path:'patient-list',
   children:[
     {path:'',component:PatientListComponent},
-    {path:':id',component:PatientDetailsComponent}
+    {path:':id',component:PatientDetailsComponent},
+    
   ]
 },
-  { path:'medicine-list',component:MedicineListComponent}
+  { path:'medicine-list',component:MedicineListComponent},
+  { path:'appointment-list',component:AppointmentListComponent},
   ]
   },
   {path:'login',component:LoginComponent},

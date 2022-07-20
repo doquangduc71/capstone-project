@@ -34,7 +34,7 @@ export class PatientDetailsComponent implements OnInit {
 
     },
       (error: HttpErrorResponse) => {
-        alert(error.error.message);
+        
         this.router.navigateByUrl("/home/patient-list");
 
       });

@@ -28,6 +28,11 @@ export class LoginComponent implements OnInit {
     }
   }
   onSubmit() {
+    if(!this.loginForm.valid){
+      this.isLoginError = true;
+      this.error_message = "Không để trống trường số điện thoại và mật khẩu";
+      return;
+    }
     this.userService.login(this.loginForm.value).subscribe(
       (data: any) => {
         localStorage.setItem('userToken', data.access_token);
@@ -40,7 +45,7 @@ export class LoginComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         this.isLoginError = true;
-        this.error_message = error.error.message;
+        this.error_message = "Số điện thoại hoặc mật khẩu không chính xác";
       }
     )
   }

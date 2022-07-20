@@ -129,6 +129,7 @@ export class PatientListComponent implements OnInit {
 
   }
   search(){
+    this.indexPagination=1;
     this.searchText=(<HTMLInputElement>document.getElementById("searchText")).value;
     
     this.ngOnInit();

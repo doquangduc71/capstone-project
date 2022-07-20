@@ -17,6 +17,7 @@ import { SpinnerComponent } from './shared/component/spinner/spinner.component';
 import { SharedModule } from './shared/shared.module';
 import { PatientListComponent } from './modules/patient-list/patient-list.component';
 import { PatientDetailsComponent } from './modules/patient-details/patient-details.component';
+import { AppointmentListComponent } from './modules/appointment-list/appointment-list.component';
 
 
 
@@ -26,6 +27,7 @@ import { PatientDetailsComponent } from './modules/patient-details/patient-detai
   declarations: [
     AppComponent,
     LoginComponent,
+    
     
     
 

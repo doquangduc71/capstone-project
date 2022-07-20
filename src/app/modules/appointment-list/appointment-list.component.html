@@ -1,0 +1,80 @@
+<div class="container">
+    <div>
+      <h2 style="text-align: center">Danh Sách Đơn Thuốc Và Bệnh Án</h2>
+    </div>
+    <div class="container-fluid">
+    
+        <div class=" search  d-flex justify-content-md-end mb-4 text-right float-right">
+         
+          <div class="col-xl-12 col-md-6 form-group" style="text-align: center">
+            <label for="searchText"></label>
+            <input id="searchText" value="{{searchText}}" name="searchText" placeholder="Tìm kiếm..." class="form-control" type="text">
+          </div>
+          
+          
+          
+          <div class="col-xl-5 col-0" style="text-align: left">
+            <br>
+            <button (click)="search()" class="btn btn-success mt-xl-0"><i class="fa fa-search" ></i>Tìm Kiếm</button>
+          </div>
+        </div>
+      
+    </div>
+  
+  
+  
+    <div class="container tab">
+  
+      <table class="table table-hover table-bordered">
+        <thead class="text-dark">
+          <tr class="bg-table-header">
+            <th scope="col" width="5%">STT</th>
+            <th scope="col">Tên Bệnh Nhân</th>
+            <th scope="col"> Số Điện Thoại Bệnh Nhân</th>
+            <th scope="col">Bác Sĩ Khám</th>
+            <th scope="col">Mã Đơn Thuốc</th>
+            <th scope="col">Đường Dẫn Đơn Thuốc</th>
+            <th scope="col">Mã Bệnh Án</th>
+            <th scope="col">Đường Dẫn Bệnh Án</th>
+            <th scope="col" width="12%">Ngày Khám</th>
+  
+          </tr>
+        </thead>
+        <tbody style="font-size: 16px">
+          <tr *ngFor="let appointment of appointments,index as i">
+            <td>{{i + 1}}</td>
+            <td  (click)="navigateToPatientProfile(appointment.patientId)"><button>{{appointment?.patientName}}</button></td>
+            <td>{{appointment?.patientPhone}}</td>
+            <td  (click)="navigateToDoctorProfile(appointment.doctorId)"><button>{{appointment?.doctorName}}</button></td>
+            <td>{{appointment?.medicalRecordTrace}}</td>
+            <td><a href="{{appointment?.medicalRecordUrl?appointment?.medicalRecordUrl:''}}" target="_blank">Xem</a></td>
+            <td>{{appointment?.prescriptionTrace}}</td>
+            <td><a href="{{appointment?.prescriptionUrl?appointment?.prescriptionUrl:''}}" target="_blank">Xem</a></td>
+            <td>{{appointment?.time}}</td>
+
+            
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="numberOfAppoinment==0" class="d-flex justify-content-center">Không tìm thấy lịch hẹn</div>
+    </div>
+  
+    <!--    phân trang-->
+    <div class="mt-3">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-md-end justify-content-center">
+          <li class="page-item"><a class="page-link" (click)="firstPage()">Đầu</a></li>
+          <li class="page-item"><a class="page-link" (click)="prviousPage()">Trang trước</a></li>
+          <!--                    <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
+          <li *ngFor="let indexP of numbersPage">
+            <a class="page-link " [ngClass]="indexPagination==indexP?'active':''"
+              (click)="indexPaginationChage(indexP)">{{indexP}}</a>
+            
+          </li>
+  
+          <li class="page-item"><a class="page-link" (click)="nextPage()">Trang kế</a></li>
+          <li class="page-item"><a class="page-link" (click)="lastPage()">Cuối</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>

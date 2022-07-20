@@ -1,48 +1,41 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Doctor } from 'src/app/model/doctor';
-import { UserService } from 'src/app/services/user.service';
-import {FormsModule} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Appointment } from 'src/app/model/appointment';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-doctor-list',
-  templateUrl: './doctor-list.component.html',
-  styleUrls: ['./doctor-list.component.css']
+  selector: 'app-appointment-list',
+  templateUrl: './appointment-list.component.html',
+  styleUrls: ['./appointment-list.component.css']
 })
-export class DoctorListComponent implements OnInit {
-  defaultStatus = "";
-  status=[
-    {id:0,value:'In-Active'},
-    {id:1,value:'Active'},
-    {id:2,value:'Ban'},
+export class AppointmentListComponent implements OnInit {
 
-  ]
+  
   searchText:string="";
   indexPagination: number = 1;
   totalPagination: number;
   numbersPage:Array<number>;
 
-  doctors: Doctor[] = [];
-  numberOfDoctor:number;
-  constructor(private doctorService: UserService,private router :Router,private activatedRoute : ActivatedRoute) { }
+  appointments: Appointment[] = [];
+  numberOfAppoinment:number;
+  constructor(private appointmentService: UserService,private router :Router,private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.doctorService.getDoctorList(0,this.searchText).subscribe((data: Doctor[]) => {
-      this.doctors = data;
+    this.appointmentService.getAppointmentList(0,this.searchText).subscribe((data: Appointment[]) => {
+      this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
       console.log(error.message);
     });
    
-    this.doctorService.getNumberOfDoctor(this.searchText).subscribe((data: number) => {
-      this.numberOfDoctor = data;
-      if ((this.numberOfDoctor % 10) != 0) {
-        this.totalPagination = (Math.floor(this.numberOfDoctor / 10)) + 1;
+    this.appointmentService.getNumberOfAppointment(this.searchText).subscribe((data: number) => {
+      this.numberOfAppoinment = data;
+      if ((this.numberOfAppoinment % 10) != 0) {
+        this.totalPagination = (Math.floor(this.numberOfAppoinment / 10)) + 1;
         this.numbersPage = Array(this.totalPagination).fill(1).map((x, i) => i + 1);
       }else{
-        this.totalPagination = (Math.floor(this.numberOfDoctor / 10));
+        this.totalPagination = (Math.floor(this.numberOfAppoinment / 10));
         this.numbersPage = Array(this.totalPagination).fill(1).map((x, i) => i + 1);
       }
       
@@ -55,8 +48,8 @@ export class DoctorListComponent implements OnInit {
   }
   indexPaginationChage(value: number) {
     this.indexPagination = value;
-    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
-      this.doctors = data;
+    this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+      this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
       console.log(error.message);
@@ -68,8 +61,8 @@ export class DoctorListComponent implements OnInit {
       return;
     }
     this.indexPagination = 1;
-    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
-      this.doctors = data;
+    this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+      this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
       console.log(error.message);
@@ -86,8 +79,8 @@ export class DoctorListComponent implements OnInit {
       this.indexPagination = this.indexPagination - 1;
     }
     
-    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
-      this.doctors = data;
+    this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+      this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
       console.log(error.message);
@@ -103,8 +96,8 @@ export class DoctorListComponent implements OnInit {
       this.indexPagination = 1;
       this.ngOnInit();
     } else {
-      this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
-        this.doctors = data;
+      this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+        this.appointments = data;
       }),
       (error:HttpErrorResponse)=>{
         console.log(error.message);
@@ -117,15 +110,19 @@ export class DoctorListComponent implements OnInit {
       return;
     }
     this.indexPagination = this.totalPagination;
-    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
-      this.doctors = data;
+    this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+      this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
       console.log(error.message);
     })
   }
-  navigateToProfile(id:number){
-    this.router.navigate(['./'+id],{relativeTo:this.activatedRoute});
+  navigateToPatientProfile(id:number){
+    this.router.navigate(['/home/patient-list/'+id],{relativeTo:this.activatedRoute});
+
+  }
+  navigateToDoctorProfile(id:number){
+    this.router.navigate(['/home/doctor-list/'+id],{relativeTo:this.activatedRoute});
 
   }
   search(){
@@ -135,6 +132,4 @@ export class DoctorListComponent implements OnInit {
     this.ngOnInit();
   }
 
-  
 }
-

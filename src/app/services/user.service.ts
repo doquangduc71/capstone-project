@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Admin } from '../model/admin';
+import { Appointment } from '../model/appointment';
 import { Doctor } from '../model/doctor';
 import { Medicine } from '../model/medicine';
 import { Patient } from '../model/patient';
@@ -38,6 +39,12 @@ export class UserService {
   }
   getNumberOfDoctor(searchText:string):Observable<number>{
     return this.httpClient.get<number>(`${this.baseUrl}/doctor/numberOfDoctor?searchText=${searchText}`);
+  }
+  getAppointmentList(index:number,searchText:string):Observable<Appointment[]>{
+    return this.httpClient.get<Appointment[]>(`${this.baseUrl}/appointment/getAll?index=${index}&searchText=${searchText}`);
+  }
+  getNumberOfAppointment(searchText:string):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseUrl}/appointment/numberOfAppointment?searchText=${searchText}`);
   }
   getPatientList(index:number,searchText:string):Observable<Patient[]>{
     return this.httpClient.get<Patient[]>(`${this.baseUrl}/patient/getAll?index=${index}&searchText=${searchText}`);
