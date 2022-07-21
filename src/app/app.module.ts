@@ -30,6 +30,7 @@ import { AppointmentListComponent } from './modules/appointment-list/appointment
     
     
     
+    
 
     
     
@@ -41,7 +42,7 @@ import { AppointmentListComponent } from './modules/appointment-list/appointment
     BrowserAnimationsModule,
     DefaultModule,
     ReactiveFormsModule,
-    
+    SharedModule
     
     
     
