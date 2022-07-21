@@ -21,3 +21,6 @@ td,th{
   #lblBan{
     color: #eb131e;
   }
+  #tbl{
+    cursor: pointer;
+  }

@@ -12,4 +12,7 @@ td,th{
     border: none;
     
   }
+  #tbl{
+    cursor: pointer;
+  }
  
