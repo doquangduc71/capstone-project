@@ -9,7 +9,7 @@
     <p>{{data.message}}</p>
 </div>
 
-<input  id="reason" class="form-control form-control-sm border border-primary" *ngIf="data.type=='confirmBan'" name="reason" [(ngModel)]="data.reason" placeholder="Điền lý do ban"/>
+<textarea  id="reason" class="form-control form-control-sm border border-primary" rows="4" *ngIf="data.type=='confirmBan'" name="reason" [(ngModel)]="data.reason" placeholder="Điền lý do ban..."></textarea>
 <div mat-dialog-actions [align]="'end'">
     <button *ngIf="data.type=='confirm'" mat-raised-button [mat-dialog-close]="false">
         {{data.cancelCaption}}
