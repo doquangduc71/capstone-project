@@ -14,9 +14,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DoctorListComponent implements OnInit {
   defaultStatus = "";
   status=[
-    {id:0,value:'In-Active'},
-    {id:1,value:'Active'},
-    {id:2,value:'Ban'},
+    {id:0,name:'Không Hoạt Động',value:'In-Active'},
+    {id:1,name:'Hoạt Động',value:'Active'},
+    {id:2,name:'Bị Cấm',value:'Ban'},
 
   ]
   searchText:string="";

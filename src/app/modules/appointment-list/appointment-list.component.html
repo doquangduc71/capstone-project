@@ -47,9 +47,9 @@
             <td>{{appointment?.patientPhone}}</td>
             <td  (click)="navigateToDoctorProfile(appointment.doctorId)">{{appointment?.doctorName}}</td>
             <td>{{appointment?.prescriptionTrace}}</td>
-            <td><a href="{{appointment?.prescriptionUrl?appointment?.prescriptionUrl:''}}" target="_blank">Xem</a></td>
+            <td><a href="{{appointment?.prescriptionUrl?appointment?.prescriptionUrl:''}}" target="_blank" [hidden]="appointment?.prescriptionUrl==null?true:false">Xem</a></td>
             <td>{{appointment?.medicalRecordTrace}}</td>
-            <td><a href="{{appointment?.medicalRecordUrl?appointment?.medicalRecordUrl:''}}" target="_blank">Xem</a></td>
+            <td><a href="{{appointment?.medicalRecordUrl?appointment?.medicalRecordUrl:''}}" target="_blank" [hidden]="appointment?.medicalRecordUrl==null?true:false">Xem</a></td>
             <td>{{appointment?.time}}</td>
 
             

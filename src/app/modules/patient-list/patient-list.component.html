@@ -46,7 +46,7 @@
             <td>{{patient?.jobPlace}}</td>
             <td>
               <div *ngFor="let sta of status">
-                  <label *ngIf="patient?.isActive==sta?.id" id="lbl{{sta?.value}}">{{sta?.value}}</label>
+                  <label *ngIf="patient?.isActive==sta?.id" id="lbl{{sta?.value}}">{{sta?.name}}</label>
               </div>
             </td>
           </tr>

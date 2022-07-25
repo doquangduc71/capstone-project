@@ -21,9 +21,9 @@ export class DoctorDetailsComponent implements OnInit {
   doctor: Doctor;
   reason: string;
   status = [
-    { id: 0, value: 'Active' },
-    { id: 1, value: 'Ban' },
-    { id: 2, value: 'UnBan' },
+    { id: 0, value: 'Active' ,name:'Hoạt Động'},
+    { id: 1, value: 'Ban' ,name: 'Bị Cấm'},
+    { id: 2, value: 'UnBan' ,name: 'Bỏ Cấm'},
   ]
 
   constructor(public loader: LoadingService, private route: ActivatedRoute, private doctorService: UserService, private router: Router, private dialog: DialogService, private banDialog: MatDialog) { }
@@ -54,7 +54,7 @@ export class DoctorDetailsComponent implements OnInit {
       let dialogRef = this.banDialog.open(ConfirmDialogComponent, {
         data: {
           title: 'Thay đổi trạng thái',
-          message: 'Lý do ban tài khoản',
+          message: 'Lý do cấm tài khoản',
           confirmCaption: 'Xác nhận',
           cancelCaption: 'Hủy',
           reason: this.reason,
@@ -68,7 +68,7 @@ export class DoctorDetailsComponent implements OnInit {
         if (result == undefined || result==="") {
           
           
-          this.openAlertDialog('Cần nhập lý do ban tài khoản');
+          this.openAlertDialog('Cần nhập lý do cấm tài khoản');
           
         } else if (result != false) {
           

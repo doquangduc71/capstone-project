@@ -1,19 +1,19 @@
 
 <div class="container emp-profile">
-    <p class="text-dark mb-4" *ngIf="patient?.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{patient?.reason}}</span></p>
+    <p class="text-dark mb-4" *ngIf="patient.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{patient.reason}}</span></p>
     <app-spinner *ngIf="loading$ | async"></app-spinner>
     
         <div class="row">
             
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="{{patient?.imageUrl?patient?.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
+                    <img src="{{patient.imageUrl?patient.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                             <h2 >
-                                {{patient?.fullName}}
+                                {{patient.fullName}}
                             </h2>
                             <!-- <h4>
                                 {{patient?.specialty}}
@@ -21,35 +21,35 @@
                             <!-- <p class="proile-rating">RATTING : <span>{{patient?.rating}}/5</span></p> -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <mat-tab-group dynamicHeight mat-align-tabs="start">
-                            <mat-tab label="About"> 
+                            <mat-tab label="Thông Tin"> 
                                 <div class="tab-pane fade show active mt-4" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">User Id</label>
+                                            <label style="font-weight:500;">Id</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.id}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Name</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{patient?.fullName}}</p>
+                                            <p>{{patient.id}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">DOB</label>
+                                            <label style="font-weight:500;">Tên</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.dob}}</p>
+                                            <p>{{patient.fullName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Gender</label>
+                                            <label style="font-weight:500;">Ngày Sinh</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{patient.dob}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Giới Tính</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p *ngIf="patient?.gender==1;else elseBlock">Nữ</p>
@@ -62,71 +62,72 @@
                                             <label style="font-weight:500;">Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.email}}</p>
+                                            <p>{{patient.email}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Phone</label>
+                                            <label style="font-weight:500;">Điện Thoại</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.phone}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Job</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{patient?.job}}</p>
+                                            <p>{{patient.phone}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Job Place</label>
+                                            <label style="font-weight:500;">Nghề Nghiệp</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.jobPlace}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Street Name</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{patient?.streetName}}</p>
+                                            <p>{{patient.job}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">District Name</label>
+                                            <label style="font-weight:500;">Nơi Làm Việc</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.districtName}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Ward Name</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{patient?.wardName}}</p>
+                                            <p>{{patient.jobPlace}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">City Name</label>
+                                            <label style="font-weight:500;">Tên Đường</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.cityName}}</p>
+                                            <p>{{patient.streetName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Ethnic Name</label>
+                                            <label style="font-weight:500;">Tên Phường</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.ethnicName}}</p>
+                                            <p>{{patient.wardName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Tên Quận</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{patient.districtName}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Tỉnh/Thành Phố</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{patient.cityName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Dân Tộc</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{patient.ethnicName}}</p>
                                         </div>
                                     </div>
                                     
@@ -134,30 +135,30 @@
                                     
                         </div>
                             </mat-tab>
-                            <mat-tab label="Timeline"> 
+                            <mat-tab label="Chỉ Số"> 
                                 <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Weight</label>
+                                            <label style="font-weight:500;">Cân Nặng</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.weight}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Height</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{patient?.height}}</p>
+                                            <p>{{patient.weight}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Blood Type</label>
+                                            <label style="font-weight:500;">Chiều Cao</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient?.bloodType}}</p>
+                                            <p>{{patient.height}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Nhóm Máu</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{patient.bloodType}}</p>
                                         </div>
                                     </div>
                                    
@@ -173,7 +174,7 @@
             <div class="col-md-2">
                 <div *ngFor="let s of status" >
                     <div *ngIf="patient?.isActive==s.id" >
-                        <button (click)="changeStatus()" class="profile-edit-btn" name="btn{{s.value}}" id="btn{{s.value}}">{{s?.value}}</button>
+                        <button (click)="changeStatus()" class="profile-edit-btn" name="btn{{s.value}}" id="btn{{s.value}}">{{s?.name}}</button>
                     </div>
                     
                 </div>
@@ -182,7 +183,7 @@
                 
             </div>
             <div class="col-md-2">
-                <a routerLink="/home/patient-list"><i class="fa fa-chevron-left"></i> Back to Patient List</a>
+                <a href="javascript:history.back()"><i class="fa fa-chevron-left"></i> Trở Lại</a>
                 
             </div>
         </div>

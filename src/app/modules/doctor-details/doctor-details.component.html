@@ -1,55 +1,55 @@
 
 <div class="container emp-profile">
-    <p class="text-dark mb-4" *ngIf="doctor?.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{doctor?.reason}}</span></p>
+    <p class="text-dark mb-4" *ngIf="doctor?.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{doctor.reason}}</span></p>
     <app-spinner *ngIf="loading$ | async"></app-spinner>
     
         <div class="row">
             
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="{{doctor?.imageUrl?doctor?.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
+                    <img src="{{doctor.imageUrl?doctor.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                             <h2 >
-                                {{doctor?.fullName}}
+                                {{doctor.fullName}}
                             </h2>
                             <h4>
-                                {{doctor?.specialty}}
+                                {{doctor.specialty}}
                             </h4>
-                            <p class="proile-rating">RATTING : <span>{{doctor?.rating}}/5</span></p>
+                            <p class="proile-rating">Đánh Giá : <span>{{doctor.rating}}/5</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <mat-tab-group dynamicHeight mat-align-tabs="start">
-                            <mat-tab label="About"> 
+                            <mat-tab label="Thông Tin"> 
                                 <div class="tab-pane fade show active mt-4" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">User Id</label>
+                                            <label style="font-weight:500;">Id</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.id}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Name</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{doctor?.fullName}}</p>
+                                            <p>{{doctor.id}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">DOB</label>
+                                            <label style="font-weight:500;">Tên</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.dob}}</p>
+                                            <p>{{doctor.fullName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Gender</label>
+                                            <label style="font-weight:500;">Ngày Sinh</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{doctor.dob}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Giới Tính</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p *ngIf="doctor?.gender==1;else elseBlock">Nữ</p>
@@ -58,10 +58,10 @@
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Position</label>
+                                            <label style="font-weight:500;">Vị Trí</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.position}}</p>
+                                            <p>{{doctor.position}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -69,82 +69,82 @@
                                             <label style="font-weight:500;">Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.email}}</p>
+                                            <p>{{doctor.email}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Phone</label>
+                                            <label style="font-weight:500;">Điện Thoại</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.phone}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Specialty</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{doctor?.specialty}}</p>
+                                            <p>{{doctor.phone}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Job Place</label>
+                                            <label style="font-weight:500;">Chuyên Khoa</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.jobPlace}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Identification Front</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="{{doctor?.identificationFront?doctor?.identificationFront:''}}" target="_blank">Show</a>
+                                            <p>{{doctor.specialty}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Identification Back</label>
+                                            <label style="font-weight:500;">Nơi Làm Việc</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="{{doctor?.identificationBack?doctor?.identificationBack:''}}" target="_blank">Show</a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label style="font-weight:500;">Signature</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="{{doctor?.signature?doctor?.signature:''}}" target="_blank">Show</a>
+                                            <p>{{doctor.jobPlace}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Certificate</label>
+                                            <label style="font-weight:500;">CMND/CCCD Mặt Trước</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="{{doctor?.certificate?doctor?.certificate:''}}" target="_blank">Show</a>
+                                            <a href="{{doctor.identificationFront?doctor.identificationFront:''}}" target="_blank">Xem</a>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Expire Date Certificate</label>
+                                            <label style="font-weight:500;">CMND/CCCD Mặt Sau</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="date" id="expireDate" name="expireDate" value="{{doctor?.expireDateCertificate}}"/>
+                                            <a href="{{doctor.identificationBack?doctor.identificationBack:''}}" target="_blank">Xem</a>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Ký Số</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{{doctor.signature?doctor.signature:''}}" target="_blank">Xem</a>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Chứng Chỉ Hành Nghề</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{{doctor.certificate?doctor.certificate:''}}" target="_blank">Xem</a>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label style="font-weight:500;">Hạn Chứng Chỉ</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" id="expireDate" name="expireDate" value="{{doctor.expireDateCertificate}}"/>
                                         </div>
                                     </div>
                                    
                                     
                         </div>
                             </mat-tab>
-                            <mat-tab label="Timeline"> 
+                            <mat-tab label="Hoạt Động"> 
                                 <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">List Specialty</label>
+                                            <label style="font-weight:500;">Chuyên Khoa</label>
                                         </div>
                                         <div >
                                             <div class="col-md-13" *ngFor="let s of doctor?.listSpecialty">
@@ -156,7 +156,7 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">List Experience</label>
+                                            <label style="font-weight:500;">Kinh Nghiệm</label>
                                         </div>
                                         <div >
                                             <div class="col-md-13" *ngFor="let e of doctor?.listExperience">
@@ -168,11 +168,11 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">List Achievement</label>
+                                            <label style="font-weight:500;">Thành Tựu</label>
                                         </div>
                                         <div >
-                                            <div class="col-md-13" *ngFor="let a of doctor?.listAchievement">
-                                                <p>{{a?.achievement}},</p>
+                                            <div class="col-md-13" *ngFor="let a of doctor.listAchievement">
+                                                <p>{{a.achievement}},</p>
                                             </div>
                                         </div>
                                         
@@ -181,18 +181,18 @@
                                     
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Appointment Done Count</label>
+                                            <label style="font-weight:500;">Số Ca Khám Hoàn Thành</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.appointmentDoneCount}}</p>
+                                            <p>{{doctor.appointmentDoneCount}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label style="font-weight:500;">Patient Count</label>
+                                            <label style="font-weight:500;">Số Bệnh Nhân</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor?.patientCount}}</p>
+                                            <p>{{doctor.patientCount}}</p>
                                         </div>
                                     </div>
                                    
@@ -208,7 +208,7 @@
             <div class="col-md-2">
                 <div *ngFor="let s of status" >
                     <div *ngIf="doctor?.isActive==s.id" >
-                        <button (click)="changeStatus()" class="profile-edit-btn" name="btn{{s.value}}" id="btn{{s.value}}">{{s?.value}}</button>
+                        <button (click)="changeStatus()" class="profile-edit-btn" name="btn{{s.value}}" id="btn{{s.value}}">{{s?.name}}</button>
                     </div>
                     
                 </div>
@@ -217,7 +217,7 @@
                 
             </div>
             <div class="col-md-2">
-                <a routerLink="/home/doctor-list"><i class="fa fa-chevron-left"></i> Back to Doctor List</a>
+                <a href="javascript:history.back()"><i class="fa fa-chevron-left"></i> Trở Lại</a>
                 
             </div>
         </div>
