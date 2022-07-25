@@ -5,3 +5,6 @@ td,th{
     background-color: #666;
     color: white;
   }
+  #tbl{
+    cursor: pointer;
+  }
