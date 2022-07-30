@@ -5,10 +5,12 @@ import { AuthGuard } from './auth/auth.guard';
 import { DefaultComponent } from './layouts/default/default.component';
 import { LoginComponent } from './layouts/login/login.component';
 import { AppointmentListComponent } from './modules/appointment-list/appointment-list.component';
+import { ChangePasswordComponent } from './modules/change-password/change-password.component';
 
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DoctorDetailsComponent } from './modules/doctor-details/doctor-details.component';
 import { DoctorListComponent } from './modules/doctor-list/doctor-list.component';
+import { MedicalRecordsHistoryComponent } from './modules/medical-records-history/medical-records-history.component';
 import { MedicineListComponent } from './modules/medicine-list/medicine-list.component';
 import { PatientDetailsComponent } from './modules/patient-details/patient-details.component';
 import { PatientListComponent } from './modules/patient-list/patient-list.component';
@@ -31,8 +33,10 @@ children:[
     
   ]
 },
+  { path:'medical-records',component:MedicalRecordsHistoryComponent},
   { path:'medicine-list',component:MedicineListComponent},
   { path:'appointment-list',component:AppointmentListComponent},
+  { path:'change-password',component:ChangePasswordComponent},
   ]
   },
   {path:'login',component:LoginComponent},

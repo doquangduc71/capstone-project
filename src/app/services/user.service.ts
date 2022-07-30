@@ -65,4 +65,7 @@ export class UserService {
   getAdminInfor(id:number){
     return this.httpClient.get<Admin>(`${this.baseUrl}/user/${id}`);
   }
+  changePassword(id:number,oldPassword:any,newPassword:any){
+    return this.httpClient.put(`${this.baseUrl}/auth/changePassword?id=${id}&password=${oldPassword}&newPassword=${newPassword}`,id&oldPassword&newPassword);
+  }
 }

@@ -16,7 +16,24 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { PatientListComponent } from 'src/app/modules/patient-list/patient-list.component';
 import { PatientDetailsComponent } from 'src/app/modules/patient-details/patient-details.component';
 import { AppointmentListComponent } from 'src/app/modules/appointment-list/appointment-list.component';
+import { AngularFireModule  } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
+import firebase from "firebase/compat/app";
 
+import { MedicalRecordsHistoryComponent } from 'src/app/modules/medical-records-history/medical-records-history.component';
+import { ChangePasswordComponent } from 'src/app/modules/change-password/change-password.component';
+
+
+const firebaseConfig ={
+  apiKey: "AIzaSyDLGYZDO2FgCKP2fuKbDGUEggosgYYCyPk",
+  authDomain: "telecare-chat-storing.firebaseapp.com",
+  projectId: "telecare-chat-storing",
+  storageBucket: "telecare-chat-storing.appspot.com",
+  messagingSenderId: "57707879800",
+  appId: "1:57707879800:web:fdc10a07ecc25349fe7c8d",
+  measurementId: "G-PSCL32HGWK"
+}
 
 @NgModule({
   declarations: [
@@ -28,10 +45,13 @@ import { AppointmentListComponent } from 'src/app/modules/appointment-list/appoi
     PatientListComponent,
     PatientDetailsComponent,
     AppointmentListComponent,
+    MedicalRecordsHistoryComponent,
+    ChangePasswordComponent,
     
     
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
     CommonModule,
     RouterModule,
     SharedModule,
@@ -39,8 +59,15 @@ import { AppointmentListComponent } from 'src/app/modules/appointment-list/appoi
     ReactiveFormsModule,
     HttpClientModule,
     MatTabsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
     
-  ]
+    AngularFireStorageModule,
+    
+    
+    
+    
+    
+  ],
+ 
 })
 export class DefaultModule { }

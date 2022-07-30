@@ -40,7 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
                         localStorage.clear();
                         this.router.navigateByUrl('/login');
                     }
-                    return throwError("");
+                    return throwError(err.message);
                 })
                
 

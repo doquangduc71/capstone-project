@@ -13,28 +13,27 @@ import { LoginComponent } from './layouts/login/login.component';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { SpinnerComponent } from './shared/component/spinner/spinner.component';
+
 import { SharedModule } from './shared/shared.module';
-import { PatientListComponent } from './modules/patient-list/patient-list.component';
-import { PatientDetailsComponent } from './modules/patient-details/patient-details.component';
-import { AppointmentListComponent } from './modules/appointment-list/appointment-list.component';
+import { ChangePasswordComponent } from './modules/change-password/change-password.component';
 
 
 
-;
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     
-    
-    
-    
 
-    
-    
-    
+
+
+
+
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -42,20 +41,22 @@ import { AppointmentListComponent } from './modules/appointment-list/appointment
     BrowserAnimationsModule,
     DefaultModule,
     ReactiveFormsModule,
-    SharedModule
-    
-    
-    
-    
+    SharedModule,
+   
+
+
+
+
   ],
-  
+
   providers: [UserService,AuthGuard,
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptor,
-      multi:true
-    }],
-  
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },],
+    
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
