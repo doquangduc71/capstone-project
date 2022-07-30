@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loading$ = this.loader.loading$;
     this.loginForm = this.formBuider.group({
-      phone: ['', Validators.required],
-      password: ['', Validators.required]
+      phone: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     })
 
     
@@ -32,11 +32,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     
-    if(!this.loginForm.valid){
-      this.isLoginError = true;
-      this.error_message = "Không để trống trường số điện thoại và mật khẩu";
-      return;
-    }
+    
     this.userService.login(this.loginForm.value).subscribe(
       (data: any) => {
         localStorage.setItem('userToken', data.access_token);

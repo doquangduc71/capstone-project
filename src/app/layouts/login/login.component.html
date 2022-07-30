@@ -19,13 +19,20 @@
                                         <input formControlName="phone" type="text" class="form-control form-control-user"  required
                                            
                                             placeholder="Enter Phone Number...">
+                                            <div *ngIf="loginForm.controls['phone'].touched && loginForm.controls['phone'].invalid" class="text-left text-danger  mt-1">
+                                                <i *ngIf="loginForm.controls['phone'].errors?.['required']" >Không để trống trường này</i>
+                                            </div>
                                     </div>
                                     <div class="form-group">
                                         <input formControlName="password" type="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Password" required>
+                                            <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid" class="text-left text-danger mt-1">
+                                                <i *ngIf="loginForm.controls['password'].errors?.['required']">Không để trống trường này</i>
+                                               
+                                            </div>
                                     </div>
                                     
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">Đăng Nhập</button>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="!(loginForm.valid && loginForm.dirty)">Đăng Nhập</button>
                                     
                                  
                                  

@@ -38,23 +38,6 @@ export class ChangePasswordComponent implements OnInit {
   
   onChangePassword() {
     
-    
-    
-    // this.userService.login(this.changePasswordForm.value).subscribe(
-    //   (data: any) => {
-    //     localStorage.setItem('userToken', data.access_token);
-    //     localStorage.setItem('userId', data.user_id);
-        
-         
-        
-    //     this.router.navigateByUrl('/home');
-
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     this.changePasswordFail = true;
-    //     this.error_message = "Số điện thoại hoặc mật khẩu không chính xác";
-    //   }
-    // )
     const oldPassword = this.changePasswordForm.controls['oldPassword'].value;
     const password = this.changePasswordForm.controls['newPassword'].value;
      const id = (Number)(localStorage.getItem('userId'));
