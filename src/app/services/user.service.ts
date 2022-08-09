@@ -1,25 +1,41 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { concatMap, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Admin } from '../model/admin';
 import { Appointment } from '../model/appointment';
+import { Chat, Message } from '../model/chat';
 import { Doctor } from '../model/doctor';
 import { Medicine } from '../model/medicine';
 import { Patient } from '../model/patient';
 import { User } from '../model/user';
-
+import {
+  addDoc,
+  collection,
+  collectionData,
+  doc,
+  Firestore,
+  getDoc,
+  orderBy,
+  query,
+  Timestamp,
+  updateDoc,
+  where,
+} from '@angular/fire/firestore';
+import { ProfileUser } from '../model/user-profile';
+import { Payment } from '../model/payment';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private header: any;
-  //private baseUrl= "http://localhost:8080/api/v1";
-  private baseUrl = "https://telecare-doxr4lwcja-as.a.run.app/api/v1";
+  private baseUrl= "http://localhost:8080/api/v1/admin";
+  //private baseUrl = "https://telecare-doxr4lwcja-as.a.run.app/api/v1";
   
   constructor(private httpClient: HttpClient) { 
     this.header = new Headers( {'Content-Type' : 'application/context'})
+    
   }
   
   getMedicineList(index:number,searchText:string):Observable<Medicine[]>{
@@ -68,4 +84,18 @@ export class UserService {
   changePassword(id:number,oldPassword:any,newPassword:any){
     return this.httpClient.put(`${this.baseUrl}/auth/changePassword?id=${id}&password=${oldPassword}&newPassword=${newPassword}`,id&oldPassword&newPassword);
   }
+  sendNotificationFromAdmin(id:number,content:any){
+    return this.httpClient.post(`${this.baseUrl}/doctor/sendNotificationFromAdmin?id=${id}&content=${content}`,id&content);
+  }
+  getPaymentList(index:number,searchText:string):Observable<Payment[]>{
+    return this.httpClient.get<Payment[]>(`${this.baseUrl}/payment/getAll?index=${index}&searchText=${searchText}`);
+  }
+  getNumberOfPayment(searchText:string):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseUrl}/payment/numberOfPayment?searchText=${searchText}`);
+  }
+
+  
+  
+ 
+  
 }

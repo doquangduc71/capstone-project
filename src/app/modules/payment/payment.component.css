@@ -1,12 +1,17 @@
+
 td,th{
-    text-align: center
+    text-align: center;
 }
 .active {
     background-color: #666;
     color: white;
   }
-  #tbl{
-    cursor: pointer;
+  label{
+    text-align: center;
+  }
+  button{
+    border: none;
+    
   }
   #lblIn-Active{
     color: #e8e807;
@@ -16,4 +21,7 @@ td,th{
   }
   #lblBan{
     color: #eb131e;
+  }
+  #tbl{
+    cursor: pointer;
   }

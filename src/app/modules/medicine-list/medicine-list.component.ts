@@ -13,7 +13,12 @@ export class MedicineListComponent implements OnInit {
   indexPagination: number = 1;
   totalPagination: number;
   searchText:string="";
+  status=[
+    {id:0,name:'Lưu Hành',value:'Active'},
+    {id:1,name:'Ngưng Lưu Hành',value:'Ban'},
+    
 
+  ]
   medicines: Medicine[] = [];
   numberOfMedicine:number;
   constructor(private medicineService: UserService) { }

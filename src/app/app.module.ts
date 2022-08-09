@@ -15,7 +15,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
 import { SharedModule } from './shared/shared.module';
-import { ChangePasswordComponent } from './modules/change-password/change-password.component';
+
+
 
 
 
@@ -24,6 +25,9 @@ import { ChangePasswordComponent } from './modules/change-password/change-passwo
   declarations: [
     AppComponent,
     LoginComponent,
+    
+    
+    
     
 
 

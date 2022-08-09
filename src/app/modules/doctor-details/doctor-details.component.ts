@@ -21,8 +21,8 @@ export class DoctorDetailsComponent implements OnInit {
   doctor: Doctor;
   reason: string;
   status = [
-    { id: 0, value: 'Active' ,name:'Hoạt Động'},
-    { id: 1, value: 'Ban' ,name: 'Bị Cấm'},
+    { id: 0, value: 'Active' ,name:'Kích Hoạt'},
+    { id: 1, value: 'Ban' ,name: 'Cấm'},
     { id: 2, value: 'UnBan' ,name: 'Bỏ Cấm'},
   ]
 
@@ -111,11 +111,44 @@ export class DoctorDetailsComponent implements OnInit {
 
     
   }
+  sendNotification(){
+    let dialogRef = this.banDialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Gửi thông báo đến bác sĩ',
+        message: 'Nội dung thông báo',
+        confirmCaption: 'Xác nhận',
+        cancelCaption: 'Hủy',
+        reason: this.reason,
+        type: "confirmBan"
+      },
+      width: '400px',
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result == undefined || result==="") {
+        
+        
+        this.openAlertDialog('Cần nhập nội dung thông báo');
+        
+      } else if (result != false) {
+
+        this.doctorService.sendNotificationFromAdmin(this.doctor.id,result).subscribe((data:any)=>{
+          this.openAlertDialog(data.message);
+        })
+        
+      }
+      
+        
+
+    });
+  }
   updateStatusDoctor(isActive: number, id: number,reason:string) {
     this.doctorService.updateStatus(isActive, id, this.expireDate,reason).subscribe((data: any) => {
       
       this.doctor.isActive = isActive;
       this.ngOnInit();
+      this.openAlertDialog(data.message);
       
     },
       (error: HttpErrorResponse) => {

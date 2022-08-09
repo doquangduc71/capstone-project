@@ -206,10 +206,16 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <div *ngFor="let s of status" >
+                <div *ngFor="let s of status" class="mb-2">
                     <div *ngIf="doctor?.isActive==s.id" >
                         <button (click)="changeStatus()" class="profile-edit-btn" name="btn{{s.value}}" id="btn{{s.value}}">{{s?.name}}</button>
                     </div>
+                    
+                </div>
+                
+                    <div >
+                        <button (click)="sendNotification()" class="profile-edit-btn" name="" id="btnNoti">Gửi Thông Báo</button>
+                    
                     
                 </div>
                 

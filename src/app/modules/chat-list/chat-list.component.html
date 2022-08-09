@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="chat-list mat-elevation-z5">
+    <div class="search-input">
+     
+          <input
+            (input)="searchPhone()"
+            
+            placeholder="Tìm kiếm..."
+            id="searchText"
+            type="text"
+            
+            
+          />
+        
+       
+    </div>
+
+
+    <div class="overflow-auto chat-list-area">
+      <mat-selection-list [multiple]="false" >
+        <mat-divider></mat-divider>
+        <mat-list-option  *ngFor="let chat of chatList " (click)="getMessageList(chat.chatRoomId)" [selected]="selectedChatRoomId===chat.chatRoomId?true:false">
+          
+          <p class="chat-title">Từ: <span class="chat-name"> {{ chat.currentUsername }} - {{ chat.currentPhone }}</span></p>
+          <p class="chat-title">Đến: <span class="chat-name"> {{ chat.receiveUsername }} - {{ chat.receivePhone }}</span></p>
+          <mat-divider></mat-divider>
+        </mat-list-option>
+        <div *ngIf="chatList.length==0" style="margin-left: 20px;">Không có cuộc hội thoại</div>
+      </mat-selection-list>
+    </div>
+    
+
+  </div>
+  <div class="messages mat-elevation-z5">
+    <div class="messages-header d-flex justify-content-between">
+
+      <h2>{{ reciveName }}</h2>
+      <h2>{{ currentName }}</h2>
+    </div>
+    <ng-template #noChatSelected>
+      <h2>Messages</h2>
+    </ng-template>
+    <mat-divider></mat-divider>
+    <div class="chat-area">
+      <ng-container>
+        <ng-container>
+          <div class="chat-bubble-container" [ngClass]="{ sender: message.currentPhone === currentPhone}"
+            *ngFor="let message of messageList">
+            <div class="chat-bubble" *ngIf="message.type==='text'">
+              {{ message.text }}
+              <span class="chat-time">{{
+                message.time | dateDisplay
+                }}</span>
+
+            </div>
+            <div *ngIf="message.type==='img'">
+              <a [href]="message.text" target="_blank"><img [src]="message.text" alt=""></a>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+</div>

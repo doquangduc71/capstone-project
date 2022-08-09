@@ -6,6 +6,7 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { LoginComponent } from './layouts/login/login.component';
 import { AppointmentListComponent } from './modules/appointment-list/appointment-list.component';
 import { ChangePasswordComponent } from './modules/change-password/change-password.component';
+import { ChatListComponent } from './modules/chat-list/chat-list.component';
 
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DoctorDetailsComponent } from './modules/doctor-details/doctor-details.component';
@@ -14,6 +15,8 @@ import { MedicalRecordsHistoryComponent } from './modules/medical-records-histor
 import { MedicineListComponent } from './modules/medicine-list/medicine-list.component';
 import { PatientDetailsComponent } from './modules/patient-details/patient-details.component';
 import { PatientListComponent } from './modules/patient-list/patient-list.component';
+import { PaymentComponent } from './modules/payment/payment.component';
+
 
 const routes: Routes = [
   {path:'home',component:DefaultComponent,canActivate:[AuthGuard],
@@ -37,6 +40,8 @@ children:[
   { path:'medicine-list',component:MedicineListComponent},
   { path:'appointment-list',component:AppointmentListComponent},
   { path:'change-password',component:ChangePasswordComponent},
+  { path:'chat-list',component:ChatListComponent},
+  { path:'payment',component:PaymentComponent},
   ]
   },
   {path:'login',component:LoginComponent},

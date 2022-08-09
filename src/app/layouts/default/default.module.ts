@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
@@ -23,7 +23,12 @@ import firebase from "firebase/compat/app";
 
 import { MedicalRecordsHistoryComponent } from 'src/app/modules/medical-records-history/medical-records-history.component';
 import { ChangePasswordComponent } from 'src/app/modules/change-password/change-password.component';
-
+import { ChatListComponent } from 'src/app/modules/chat-list/chat-list.component';
+import {MatListModule} from '@angular/material/list';
+import { DateDisplayPipe } from 'src/app/pipes/date-display.pipe';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { PaymentComponent } from 'src/app/modules/payment/payment.component';
 
 const firebaseConfig ={
   apiKey: "AIzaSyDLGYZDO2FgCKP2fuKbDGUEggosgYYCyPk",
@@ -47,6 +52,9 @@ const firebaseConfig ={
     AppointmentListComponent,
     MedicalRecordsHistoryComponent,
     ChangePasswordComponent,
+    ChatListComponent,
+    DateDisplayPipe,
+    PaymentComponent,
     
     
   ],
@@ -60,14 +68,16 @@ const firebaseConfig ={
     HttpClientModule,
     MatTabsModule,
     MatProgressSpinnerModule,
-    
+    MatListModule,
     AngularFireStorageModule,
-    
+    MatFormFieldModule,
+    MatAutocompleteModule
     
     
     
     
   ],
+  providers:[DatePipe]
  
 })
 export class DefaultModule { }
