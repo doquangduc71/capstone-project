@@ -101,7 +101,7 @@
                                             <label style="font-weight:500;">CMND/CCCD Mặt Trước</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="{{doctor.identificationFront?doctor.identificationFront:''}}" target="_blank">Xem</a>
+                                            <p><a href="{{doctor.identificationFront?doctor.identificationFront:''}}" [ngClass]="doctor.identificationFront==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -109,7 +109,7 @@
                                             <label style="font-weight:500;">CMND/CCCD Mặt Sau</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="{{doctor.identificationBack?doctor.identificationBack:''}}" target="_blank">Xem</a>
+                                            <p><a href="{{doctor.identificationBack?doctor.identificationBack:''}}" [ngClass]="doctor.identificationBack==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -117,7 +117,7 @@
                                             <label style="font-weight:500;">Ký Số</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="{{doctor.signature?doctor.signature:''}}" target="_blank">Xem</a>
+                                            <p><a href="{{doctor.signature?doctor.signature:''}}" [ngClass]="doctor.signature==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -125,7 +125,7 @@
                                             <label style="font-weight:500;">Chứng Chỉ Hành Nghề</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="{{doctor.certificate?doctor.certificate:''}}" target="_blank">Xem</a>
+                                            <p><a href="{{doctor.certificate?doctor.certificate:''}}" [ngClass]="doctor.certificate==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">

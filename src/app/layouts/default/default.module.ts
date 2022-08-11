@@ -29,6 +29,9 @@ import { DateDisplayPipe } from 'src/app/pipes/date-display.pipe';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { PaymentComponent } from 'src/app/modules/payment/payment.component';
+import { ReportListComponent } from 'src/app/modules/report-list/report-list.component';
+import { AppointmentDetailsComponent } from 'src/app/modules/appointment-details/appointment-details.component';
+import { AppointmentListDetailsComponent } from 'src/app/modules/appointment-list-details/appointment-list-details.component';
 
 const firebaseConfig ={
   apiKey: "AIzaSyDLGYZDO2FgCKP2fuKbDGUEggosgYYCyPk",
@@ -55,6 +58,9 @@ const firebaseConfig ={
     ChatListComponent,
     DateDisplayPipe,
     PaymentComponent,
+    ReportListComponent,
+    AppointmentDetailsComponent,
+    AppointmentListDetailsComponent,
     
     
   ],

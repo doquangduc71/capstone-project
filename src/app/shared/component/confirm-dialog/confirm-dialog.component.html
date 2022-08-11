@@ -6,7 +6,8 @@
 </div>
 
 <div mat-dialog-content>
-    <p>{{data.message}}</p>
+    <p style="word-wrap: break-word;
+    white-space:pre-wrap;">{{data.message}}</p>
 </div>
 
 <textarea  id="reason" class="form-control form-control-sm border border-primary" rows="4" *ngIf="data.type=='confirmBan'" name="reason" [(ngModel)]="data.reason" ></textarea>

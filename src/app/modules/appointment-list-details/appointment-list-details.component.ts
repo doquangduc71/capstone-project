@@ -5,31 +5,37 @@ import { Appointment } from 'src/app/model/appointment';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-appointment-list',
-  templateUrl: './appointment-list.component.html',
-  styleUrls: ['./appointment-list.component.css']
+  selector: 'app-appointment-list-details',
+  templateUrl: './appointment-list-details.component.html',
+  styleUrls: ['./appointment-list-details.component.css']
 })
-export class AppointmentListComponent implements OnInit {
+export class AppointmentListDetailsComponent implements OnInit {
 
-  
   searchText:string="";
   indexPagination: number = 1;
   totalPagination: number;
   numbersPage:Array<number>;
+  status=[
+   
+    {id:1,name:'Chưa xác nhận',value:'In-Active'},
+    {id:2,name:'Đã xác nhận',value:'Active'},
+    {id:3,name:'Hoàn thành',value:'Done'},
+    {id:4,name:'Huỷ',value:'Cancel'},
 
+  ]
   appointments: Appointment[] = [];
   numberOfAppoinment:number;
   constructor(private appointmentService: UserService,private router :Router,private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.appointmentService.getAppointmentList(0,this.searchText).subscribe((data: Appointment[]) => {
+    this.appointmentService.getAppointmentListDetails(0,this.searchText).subscribe((data: Appointment[]) => {
       this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
       console.log(error.message);
     });
    
-    this.appointmentService.getNumberOfAppointment(this.searchText).subscribe((data: number) => {
+    this.appointmentService.getNumberOfAppointmentDetails(this.searchText).subscribe((data: number) => {
       this.numberOfAppoinment = data;
       if ((this.numberOfAppoinment % 10) != 0) {
         this.totalPagination = (Math.floor(this.numberOfAppoinment / 10)) + 1;
@@ -48,7 +54,7 @@ export class AppointmentListComponent implements OnInit {
   }
   indexPaginationChage(value: number) {
     this.indexPagination = value;
-    this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+    this.appointmentService.getAppointmentListDetails((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
       this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
@@ -61,7 +67,7 @@ export class AppointmentListComponent implements OnInit {
       return;
     }
     this.indexPagination = 1;
-    this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+    this.appointmentService.getAppointmentListDetails((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
       this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
@@ -79,7 +85,7 @@ export class AppointmentListComponent implements OnInit {
       this.indexPagination = this.indexPagination - 1;
     }
     
-    this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+    this.appointmentService.getAppointmentListDetails((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
       this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
@@ -96,7 +102,7 @@ export class AppointmentListComponent implements OnInit {
       this.indexPagination = 1;
       this.ngOnInit();
     } else {
-      this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+      this.appointmentService.getAppointmentListDetails((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
         this.appointments = data;
       }),
       (error:HttpErrorResponse)=>{
@@ -110,7 +116,7 @@ export class AppointmentListComponent implements OnInit {
       return;
     }
     this.indexPagination = this.totalPagination;
-    this.appointmentService.getAppointmentList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
+    this.appointmentService.getAppointmentListDetails((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Appointment[]) => {
       this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
@@ -132,7 +138,7 @@ export class AppointmentListComponent implements OnInit {
     this.ngOnInit();
   }
   navigateToDetails(id:number){
-    this.router.navigate(['./'+id],{relativeTo:this.activatedRoute});
+    this.router.navigate(['/home/appointment-list/'+id],{relativeTo:this.activatedRoute});
   }
 
 }

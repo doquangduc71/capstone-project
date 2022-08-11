@@ -1,0 +1,29 @@
+<div class="header">
+    <h2 mat-dialog-title>{{data.title}}</h2>
+    <button mat-icon-button [mat-dialog-close]="false">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content class="mb-3">
+    <p style="word-wrap: break-word;
+    white-space:pre-wrap;">{{data.messagePrice}}</p>
+    <input  id="price" type="number" class="form-control form-control-sm border border-primary" onkeydown="javascript: return event.keyCode == 69 ? false : true" rows="4"  name="price" [(ngModel)]="data.price" >
+</mat-dialog-content>
+
+<mat-dialog-content>
+    <p style="word-wrap: break-word;
+    white-space:pre-wrap;">{{data.messageReason}}</p>
+    <textarea  id="reason" class="form-control form-control-sm border border-primary" rows="4"  name="reason" [(ngModel)]="data.reason" ></textarea>
+</mat-dialog-content>
+
+<div mat-dialog-actions [align]="'end'">
+    
+    <button mat-raised-button  [mat-dialog-close]="false">
+        {{data.cancelCaption}}
+    </button>
+    <button  mat-raised-button  color="primary" [mat-dialog-close]="data">
+        {{data.confirmCaption}}
+    </button>
+</div>
+

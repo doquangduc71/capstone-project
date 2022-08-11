@@ -16,13 +16,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SpinnerComponent } from './component/spinner/spinner.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { SendNotiDialogComponent } from './component/send-noti-dialog/send-noti-dialog.component';
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
     ConfirmDialogComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SendNotiDialogComponent
   ],
   imports: [
     CommonModule,

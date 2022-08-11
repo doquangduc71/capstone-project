@@ -1,0 +1,31 @@
+
+td,th{
+    text-align: center;
+}
+.active {
+    background-color: #666;
+    color: white;
+  }
+  label{
+    text-align: center;
+  }
+  button{
+    border: none;
+    
+  }
+  #tbl{
+    cursor: pointer;
+  }
+  #lblIn-Active{
+    color: #e8e807;
+  }
+  #lblActive{
+    color: #0fd615;
+  }
+  #lblCancel{
+    color: #eb131e;
+  }
+  #lblDone{
+    color: #0c52f5;
+  }
+ 

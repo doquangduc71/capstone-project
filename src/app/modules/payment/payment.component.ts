@@ -127,6 +127,10 @@ export class PaymentComponent implements OnInit {
     this.router.navigate(['./'+id],{relativeTo:this.activatedRoute});
 
   }
+  navigateToAppointmentDetails(id:number){
+    this.router.navigate(['/home/appointment-list/'+id],{relativeTo:this.activatedRoute});
+
+  }
   search(){
      
     this.indexPagination=1;

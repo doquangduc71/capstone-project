@@ -9,29 +9,16 @@ import { Chat, Message } from '../model/chat';
 import { Doctor } from '../model/doctor';
 import { Medicine } from '../model/medicine';
 import { Patient } from '../model/patient';
-import { User } from '../model/user';
-import {
-  addDoc,
-  collection,
-  collectionData,
-  doc,
-  Firestore,
-  getDoc,
-  orderBy,
-  query,
-  Timestamp,
-  updateDoc,
-  where,
-} from '@angular/fire/firestore';
-import { ProfileUser } from '../model/user-profile';
+
 import { Payment } from '../model/payment';
+import { Report } from '../model/report';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private header: any;
-  //private baseUrl= "http://localhost:8080/api/v1/admin";
-  private baseUrl = "https://telecare-doxr4lwcja-et.a.run.app/api/v1/admin";
+  private baseUrl= "http://localhost:8080/api/v1/admin";
+  //private baseUrl = "https://telecare-doxr4lwcja-et.a.run.app/api/v1/admin";
   
   constructor(private httpClient: HttpClient) { 
     this.header = new Headers( {'Content-Type' : 'application/context'})
@@ -70,7 +57,7 @@ export class UserService {
   }
   login(formData:FormGroup) {
     
-    return this.httpClient.post(`${this.baseUrl}/auth/loginForAdmin`,formData);
+    return this.httpClient.post(`http://localhost:8080/api/v1/auth/loginForAdmin`,formData);
   }
   updateStatus(isActive:number,id:number,expireDate:any,reason:any){
     return this.httpClient.put(`${this.baseUrl}/user/updateStatus?isActive=${isActive}&id=${id}&expireDate=${expireDate}&reason=${reason}`,isActive&id&expireDate&reason);
@@ -93,6 +80,26 @@ export class UserService {
   getNumberOfPayment(searchText:string):Observable<number>{
     return this.httpClient.get<number>(`${this.baseUrl}/payment/numberOfPayment?searchText=${searchText}`);
   }
+  getReportList(index:number,searchText:string):Observable<Report[]>{
+    return this.httpClient.get<Report[]>(`${this.baseUrl}/report/getAll?index=${index}&searchText=${searchText}`);
+  }
+  getNumberOfReport(searchText:string):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseUrl}/report/numberOfReport?searchText=${searchText}`);
+  }
+  updateStatusForReport(reportId:number,statusId:number){
+    return this.httpClient.put(`${this.baseUrl}/report/updateStatus?reportId=${reportId}&statusId=${statusId}`,reportId&statusId);
+  }
+  getAppointmentDetails(id:number){
+    return this.httpClient.get<Appointment>(`${this.baseUrl}/appointment/detail/${id}`);
+  }
+  getAppointmentListDetails(index:number,searchText:string):Observable<Appointment[]>{
+    return this.httpClient.get<Appointment[]>(`${this.baseUrl}/appointmentDetails/getAll?index=${index}&searchText=${searchText}`);
+  }
+  getNumberOfAppointmentDetails(searchText:string):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseUrl}/appointmentDetails/numberOfAppointment?searchText=${searchText}`);
+  }
+
+
 
   
   

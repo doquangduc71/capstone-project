@@ -1,0 +1,26 @@
+td,th{
+    text-align: center;
+}
+.active {
+    background-color: #666;
+    color: white;
+  }
+  label{
+    text-align: center;
+  }
+  button{
+    border: none;
+    
+  }
+  #lblIn-Active{
+    color: #e8e807;
+  }
+  #lblActive{
+    color: #0fd615;
+  }
+  #lblBan{
+    color: #eb131e;
+  }
+  #tbl{
+    cursor: pointer;
+  }
