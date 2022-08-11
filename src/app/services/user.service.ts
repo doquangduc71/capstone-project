@@ -17,14 +17,17 @@ import { Report } from '../model/report';
 })
 export class UserService {
   private header: any;
-  private baseUrl= "http://localhost:8080/api/v1/admin";
-  //private baseUrl = "https://telecare-doxr4lwcja-et.a.run.app/api/v1/admin";
+  //private baseUrl= "http://localhost:8080/api/v1/admin";
+  private baseUrl = "https://telecare-doxr4lwcja-et.a.run.app/api/v1/admin";
   
   constructor(private httpClient: HttpClient) { 
     this.header = new Headers( {'Content-Type' : 'application/context'})
     
   }
-  
+  login(formData:FormGroup) {
+    
+    return this.httpClient.post(`https://telecare-doxr4lwcja-et.a.run.app/api/v1/auth/loginForAdmin`,formData);
+  }
   getMedicineList(index:number,searchText:string):Observable<Medicine[]>{
     return this.httpClient.get<Medicine[]>(`${this.baseUrl}/medicine/getAll?index=${index}&searchText=${searchText}`);
   }
@@ -55,10 +58,7 @@ export class UserService {
   getNumberOfPatient(searchText:string):Observable<number>{
     return this.httpClient.get<number>(`${this.baseUrl}/patient/numberOfPatient?searchText=${searchText}`);
   }
-  login(formData:FormGroup) {
-    
-    return this.httpClient.post(`http://localhost:8080/api/v1/auth/loginForAdmin`,formData);
-  }
+  
   updateStatus(isActive:number,id:number,expireDate:any,reason:any){
     return this.httpClient.put(`${this.baseUrl}/user/updateStatus?isActive=${isActive}&id=${id}&expireDate=${expireDate}&reason=${reason}`,isActive&id&expireDate&reason);
   }
