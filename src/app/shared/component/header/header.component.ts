@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { DialogService } from 'src/app/services/dialog.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SendNotiDialogComponent } from '../send-noti-dialog/send-noti-dialog.component';
+import { UserService } from 'src/app/services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +14,10 @@ import { SendNotiDialogComponent } from '../send-noti-dialog/send-noti-dialog.co
 export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
-  constructor(private router: Router, private dialog: DialogService, private notiDialog: MatDialog) { }
-  
+  constructor(private userService:UserService,private router: Router, private dialog: DialogService, private notiDialog: MatDialog) { }
+  role:string;
   ngOnInit(): void {
-
+    this.role = String(localStorage.getItem('role'));
   }
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
@@ -47,8 +49,7 @@ export class HeaderComponent implements OnInit {
         messageReason: 'Nội dung',
         confirmCaption: 'Xác nhận',
         cancelCaption: 'Hủy',
-
-        type: "confirmBan"
+        type: this.role
       },
       width: '400px',
       disableClose: true,
@@ -56,7 +57,7 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result == false) {
         return;
-      } else if (result.price === undefined || result.price === "") {
+      } else if ((result.price === undefined && this.role==="BUSINESS ADMIN")|| (result.price === "" && this.role==="BUSINESS ADMIN" )) {
 
         this.openAlertDialog('Cần nhập số tiền');
 
@@ -66,9 +67,17 @@ export class HeaderComponent implements OnInit {
         this.openAlertDialog('Cần nhập nội dung');
 
       } else if (result != false) {
-      
-        console.log("noi dung: " + result.reason);
-        console.log("gia tien: " + result.price);
+        const role = String(localStorage.getItem('role'));
+        this.userService.sendNotificationToAllUser(role,result.price,result.reason).subscribe((data:any)=>{
+          this.openAlertDialog(data.message);
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.error.message);
+  
+  
+        })
+        // console.log("noi dung: " + result.reason);
+        // console.log("gia tien: " + result.price);
 
       }
 

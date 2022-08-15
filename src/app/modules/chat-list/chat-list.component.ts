@@ -4,7 +4,7 @@ import { switchMap, tap } from 'rxjs/operators';
 import { Chat, Message } from 'src/app/model/chat';
 import { UserService } from 'src/app/services/user.service';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
@@ -39,11 +39,7 @@ export class ChatListComponent implements OnInit {
       this.chatList = data;
       this.chatListTemp=this.chatList;
 
-      // this.chatList.push(this.chatList[0]);
-      // this.chatList.push(this.chatList[0]);
-      // this.chatList.push(this.chatList[0]);
-      // this.chatList.push(this.chatList[0]);
-      // this.chatList.push(this.chatList[0]);
+      
     
       
       

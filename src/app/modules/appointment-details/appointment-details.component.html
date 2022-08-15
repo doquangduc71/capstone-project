@@ -28,7 +28,7 @@
                                             <label style="font-weight:500;">Id</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.id}}</p>
+                                            <p>{{appointment?.id}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -36,7 +36,7 @@
                                             <label style="font-weight:500;">Ca Khám</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.startAt.substring(0,5)}}-{{appointment.endAt.substring(0,5)}}</p>
+                                            <p>{{appointment?.startAt?.substring(0,5)}}-{{appointment?.endAt?.substring(0,5)}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -44,7 +44,7 @@
                                             <label style="font-weight:500;">Ngày Khám</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.time}}</p>
+                                            <p>{{appointment?.time}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -52,7 +52,7 @@
                                             <label style="font-weight:500;">Bệnh Nhân</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.patientName}}</p>
+                                            <p (click)="navigateToPatientProfile(appointment.patientId)">{{appointment?.patientName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -60,7 +60,7 @@
                                             <label style="font-weight:500;">Bác Sĩ</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.doctorName}}</p>
+                                            <p (click)="navigateToDoctorProfile(appointment.doctorId)">{{appointment?.doctorName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -68,7 +68,7 @@
                                             <label style="font-weight:500;">Người Thân Bệnh Nhân</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.relativeName}}</p>
+                                            <p>{{appointment?.relativeName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -76,7 +76,7 @@
                                             <label style="font-weight:500;">Mã Đơn Thuốc</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.prescriptionTrace}}</p>
+                                            <p>{{appointment?.prescriptionTrace}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -84,7 +84,7 @@
                                             <label style="font-weight:500;">Đường Dẫn Đơn Thuốc</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><a href="{{appointment.prescriptionUrl?appointment.prescriptionUrl:''}}" [ngClass]="appointment.prescriptionUrl==null?'disable':''" target="_blank">Xem</a><p>
+                                            <p><a href="{{appointment?.prescriptionUrl?appointment?.prescriptionUrl:''}}" [ngClass]="appointment?.prescriptionUrl==null?'disable':''" target="_blank">Xem</a><p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -92,7 +92,7 @@
                                             <label style="font-weight:500;">Mã Bệnh Án</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.medicalRecordTrace}}</p>
+                                            <p>{{appointment?.medicalRecordTrace}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -100,7 +100,7 @@
                                             <label style="font-weight:500;">Đường Dẫn Bệnh Án</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><a href="{{appointment.medicalRecordUrl?appointment.medicalRecordUrl:''}}" [ngClass]="appointment.medicalRecordUrl==null?'disable':''" target="_blank">Xem</a></p>
+                                            <p><a href="{{appointment?.medicalRecordUrl?appointment?.medicalRecordUrl:''}}" [ngClass]="appointment?.medicalRecordUrl==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -108,7 +108,7 @@
                                             <label style="font-weight:500;">Trạng Thái Ca Khám</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.appointmentStatus}}</p>
+                                            <p>{{appointment?.appointmentStatus}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -116,7 +116,7 @@
                                             <label style="font-weight:500;">Trạng Thái Thanh Toán</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{appointment.paymentStatus}}</p>
+                                            <p>{{appointment?.paymentStatus}}</p>
                                         </div>
                                     </div>
                                     
@@ -133,10 +133,10 @@
                                             <label style="font-weight:500;">Bệnh Án Và Đơn Thuốc Chia Sẻ</label>
                                         </div>
                                         <div class="col-md-13">
-                                            <div class="row-md-4" *ngFor="let mr of appointment.listSharedMedicalRecord">
+                                            <div class="row-md-4" *ngFor="let mr of appointment?.listSharedMedicalRecord">
                                                 
-                                                <p>Bệnh Án {{mr.medicalRecordName}} | <a href="{{mr.url?mr.url:''}}" [ngClass]="mr.url==null?'disable':''" target="_blank">Xem</a></p>
-                                                <p>Đơn Thuốc | <a href="{{mr.prescriptionSharedUrl?mr.prescriptionSharedUrl:''}}" [ngClass]="mr.prescriptionSharedUrl==null?'disable':''"  target="_blank">Xem</a></p>
+                                                <p>Bệnh Án {{mr?.medicalRecordName}} | <a href="{{mr?.url?mr?.url:''}}" [ngClass]="mr?.url==null?'disable':''" target="_blank">Xem</a></p>
+                                                <p>Đơn Thuốc | <a href="{{mr?.prescriptionSharedUrl?mr?.prescriptionSharedUrl:''}}" [ngClass]="mr?.prescriptionSharedUrl==null?'disable':''"  target="_blank">Xem</a></p>
                                                 <div class="mb-3"><mat-divider></mat-divider></div>
                                             </div>
                                             
@@ -148,7 +148,32 @@
                         </div > 
                                 
                             </mat-tab>
-                            
+                            <mat-tab label="Phản Hồi"> 
+                                <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <label style="font-weight:500;">{{feedBack?.comment}}</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div *ngFor="let h of isHidden">
+                                                <div *ngIf="feedBack?.isHidden==h.id" >
+                                                    <button (click)="changeStatusFeedBack()" class="profile-edit-btn" name="btn{{h.value}}" id="btn{{h.value}}">{{h?.name}}</button>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                              
+                                            
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                   
+                           
+                        </div > 
+                                
+                            </mat-tab>
                           </mat-tab-group>
                     </ul>
                 </div>

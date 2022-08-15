@@ -33,8 +33,9 @@
             <th scope="col">Tên Bệnh Nhân</th>
             
             <th scope="col">Bác Sĩ Khám</th>
-            <th scope="col">Ca Khám</th>
             <th scope="col">Ngày Khám</th>
+            <th scope="col">Ca Khám</th>
+            
             <th scope="col">Trạng Thái Ca Khám</th>
            
   
@@ -42,16 +43,16 @@
         </thead>
         <tbody style="font-size: 16px">
           <tr *ngFor="let appointment of appointments,index as i">
-            <td>{{i + 1}}</td>
+            <td>{{i + 1 + (indexPagination-1)*10}}</td>
             <td  (click)="navigateToDetails(appointment.id)">{{appointment?.id}}</td>
             <td  (click)="navigateToPatientProfile(appointment.patientId)">{{appointment?.patientName}}</td>
             
             <td  (click)="navigateToDoctorProfile(appointment.doctorId)">{{appointment?.doctorName}}</td>
            
-            
+            <td>{{appointment?.time}}</td>
             <td>{{appointment?.startAt?.substring(0,5)}}-{{appointment?.endAt?.substring(0,5)}}</td>
             
-            <td>{{appointment?.time}}</td>
+            
             <td>
                 <div *ngFor="let sta of status">
                     <label *ngIf="appointment?.appointmentStatus===sta?.name" id="lbl{{sta?.value}}">{{sta?.name}}</label>

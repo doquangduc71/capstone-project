@@ -1,22 +1,21 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Doctor } from 'src/app/model/doctor';
-import { UserService } from 'src/app/services/user.service';
-import {FormsModule} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ListedPrice } from 'src/app/model/listed-price';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-doctor-list',
-  templateUrl: './doctor-list.component.html',
-  styleUrls: ['./doctor-list.component.css']
+  selector: 'app-listed-price-list',
+  templateUrl: './listed-price-list.component.html',
+  styleUrls: ['./listed-price-list.component.css']
 })
-export class DoctorListComponent implements OnInit {
+export class ListedPriceListComponent implements OnInit {
+
   defaultStatus = "";
   status=[
-    {id:0,name:'Chưa Kích Hoạt',value:'In-Active'},
-    {id:1,name:'Hoạt Động',value:'Active'},
-    {id:2,name:'Bị Cấm',value:'Ban'},
+    {id:0,name:'Giá Hiện Hành',value:'Active'},
+    {id:1,name:'Giá Cũ',value:'Ban'},
+    
 
   ]
   searchText:string="";
@@ -24,19 +23,19 @@ export class DoctorListComponent implements OnInit {
   totalPagination: number;
   numbersPage:Array<number>;
 
-  doctors: Doctor[] = [];
+  doctors: ListedPrice[] = [];
   numberOfDoctor:number;
-  constructor(private doctorService: UserService,private router :Router,private activatedRoute : ActivatedRoute) { }
+  constructor(private userService: UserService,private router :Router,private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.doctorService.getDoctorList(0,this.searchText).subscribe((data: Doctor[]) => {
+    this.userService.getListedPriceList(0,this.searchText).subscribe((data: ListedPrice[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
       console.log(error.message);
     });
    
-    this.doctorService.getNumberOfDoctor(this.searchText).subscribe((data: number) => {
+    this.userService.getNumberOfListedPrice(this.searchText).subscribe((data: number) => {
       this.numberOfDoctor = data;
       if ((this.numberOfDoctor % 10) != 0) {
         this.totalPagination = (Math.floor(this.numberOfDoctor / 10)) + 1;
@@ -55,7 +54,7 @@ export class DoctorListComponent implements OnInit {
   }
   indexPaginationChage(value: number) {
     this.indexPagination = value;
-    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
+    this.userService.getListedPriceList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: ListedPrice[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
@@ -68,7 +67,7 @@ export class DoctorListComponent implements OnInit {
       return;
     }
     this.indexPagination = 1;
-    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
+    this.userService.getListedPriceList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: ListedPrice[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
@@ -86,7 +85,7 @@ export class DoctorListComponent implements OnInit {
       this.indexPagination = this.indexPagination - 1;
     }
     
-    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
+    this.userService.getListedPriceList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: ListedPrice[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
@@ -103,7 +102,7 @@ export class DoctorListComponent implements OnInit {
       this.indexPagination = 1;
       this.ngOnInit();
     } else {
-      this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
+      this.userService.getListedPriceList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: ListedPrice[]) => {
         this.doctors = data;
       }),
       (error:HttpErrorResponse)=>{
@@ -117,7 +116,7 @@ export class DoctorListComponent implements OnInit {
       return;
     }
     this.indexPagination = this.totalPagination;
-    this.doctorService.getDoctorList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: Doctor[]) => {
+    this.userService.getListedPriceList((this.indexPagination * 10) - 10,this.searchText).subscribe((data: ListedPrice[]) => {
       this.doctors = data;
     },
     (error:HttpErrorResponse)=>{
@@ -135,6 +134,4 @@ export class DoctorListComponent implements OnInit {
     this.ngOnInit();
   }
 
-  
 }
-

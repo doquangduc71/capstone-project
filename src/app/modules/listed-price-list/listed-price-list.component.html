@@ -1,6 +1,6 @@
 <div class="container">
     <div>
-      <h2 style="text-align: center">Danh Sách Đơn Thuốc Và Bệnh Án</h2>
+      <h2 style="text-align: center">Lịch Sử Sửa Đổi Giá Khám</h2>
     </div>
     <div class="container-fluid">
     
@@ -29,36 +29,31 @@
         <thead class="text-dark">
           <tr class="bg-table-header">
             <th scope="col" width="5%">STT</th>
-            <th scope="col">Mã Ca Khám</th>
-            <th scope="col">Tên Bệnh Nhân</th>
-            <th scope="col"> Số Điện Thoại Bệnh Nhân</th>
-            <th scope="col" >Bác Sĩ Khám</th>
-            <th scope="col">Mã Đơn Thuốc</th>
-            <th scope="col">Đường Dẫn Đơn Thuốc</th>
-            <th scope="col">Mã Bệnh Án</th>
-            <th scope="col">Đường Dẫn Bệnh Án</th>
-            <th scope="col" width="12%">Ngày Khám</th>
+            
+            <th scope="col">Giá Niêm Yết</th>
+            <th scope="col">Thời Gian</th>
+            <th scope="col"width="30%">Lý Do</th>
+            <th scope="col">Trạng Thái</th>
   
           </tr>
         </thead>
         <tbody style="font-size: 16px">
-          <tr *ngFor="let appointment of appointments,index as i">
+          <tr *ngFor="let doctor of doctors,index as i">
             <td>{{i + 1 + (indexPagination-1)*10}}</td>
-            <td  (click)="navigateToDetails(appointment.id)">{{appointment?.id}}</td>
-            <td  (click)="navigateToPatientProfile(appointment.patientId)">{{appointment?.patientName}}</td>
-            <td>{{appointment?.patientPhone}}</td>
-            <td  (click)="navigateToDoctorProfile(appointment.doctorId)">{{appointment?.doctorName}}</td>
-            <td>{{appointment?.prescriptionTrace}}</td>
-            <td><a href="{{appointment?.prescriptionUrl?appointment?.prescriptionUrl:''}}" target="_blank" [hidden]="appointment?.prescriptionUrl==null?true:false">Xem</a></td>
-            <td>{{appointment?.medicalRecordTrace}}</td>
-            <td><a href="{{appointment?.medicalRecordUrl?appointment?.medicalRecordUrl:''}}" target="_blank" [hidden]="appointment?.medicalRecordUrl==null?true:false">Xem</a></td>
-            <td>{{appointment?.time}}</td>
-
             
+            <td>{{doctor?.value | number }} VND</td>
+            <td>{{doctor?.createdAt  | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{doctor?.reason}}</td>
+            
+            <td>
+              <div *ngFor="let sta of status">
+                  <label *ngIf="doctor?.isUse==sta?.id" id="lbl{{sta?.value}}">{{sta?.name}}</label>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
-      <div *ngIf="numberOfAppoinment==0" class="d-flex justify-content-center">Không tìm thấy lịch hẹn</div>
+      <div *ngIf="numberOfDoctor==0" class="d-flex justify-content-center">Không tìm lịch sử sửa đổi giá</div>
     </div>
   
     <!--    phân trang-->

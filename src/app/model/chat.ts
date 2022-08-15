@@ -24,3 +24,14 @@ export interface Message {
   time: Date & Timestamp;
   type:string;
 }
+export interface ListMedicalRecordHistory {
+  appointmentId: string;
+  doctorId:string;
+  doctorName:string;
+}
+export interface Link {
+  url:string;
+  time: Date & Timestamp;
+}
+
+

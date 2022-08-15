@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { async } from '@firebase/util';
-import { getStorage, ref, listAll } from "firebase/storage";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { map, Observable } from 'rxjs';
+
+import { Chat, Link, ListMedicalRecordHistory, Message } from 'src/app/model/chat';
+import { UserService } from 'src/app/services/user.service';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 
 
@@ -11,48 +13,71 @@ import { getStorage, ref, listAll } from "firebase/storage";
   styleUrls: ['./medical-records-history.component.css']
 })
 export class MedicalRecordsHistoryComponent implements OnInit {
+  chatListsRef: AngularFirestoreCollection<ListMedicalRecordHistory>;
+  messageListRef:AngularFirestoreCollection<Message>;
+  chatList: ListMedicalRecordHistory[] = [];
+  chatListTemp: ListMedicalRecordHistory[] = [];
+  messageList:Link[]=[];
+  
+  selectedChatRoomId:string;
+  constructor(private firestore: AngularFirestore, public chatsService: UserService) { }
+ 
 
-  constructor(private storage: AngularFireStorage) { }
-  filelist: Array<{ id: string, listHistory: string[] }> = [];
+  ngOnInit(): void {
+    
+    this.chatListsRef = this.firestore.collection<ListMedicalRecordHistory>('pdf');
+    this.chatListsRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({
 
-  storage2 = getStorage();
-  listRef = ref(this.storage2, '/medical_records');
+          id: c.payload.doc.id, ...c.payload.doc.data()
+        })
+        )),
 
-  async ngOnInit() {
-    await listAll(this.listRef)
-      .then((res) => {
-        res.prefixes.forEach((folderRef) => {
-        this.filelist.push({ id: folderRef.name, listHistory: [] });
-        });
+    ).subscribe((data: any) => {
+      this.chatList = data;
+      this.chatListTemp=this.chatList;
 
-      }).catch((error) => {
-        console.log(error)
-      });
-        this.filelist.forEach( item => {
-
-       const path = `/medical_records/${item.id}/`;
-       this.storage.ref(path).listAll().subscribe(  (data) => {
-
-         for (let i = 0; i < data.items.length; i++) {
-          let name =  data.items[i].name;
-          let newref =  this.storage.ref(path + data.items[i].name) ;
-          let url =   newref.getDownloadURL().subscribe(   (data) => {
-              item.listHistory.push(data);
-          });
-          let time =  newref.getMetadata().subscribe( (data)=>{
-             console.log(data.timeCreated);
-          });
-
-        }
-
-      });
-
-    });
-    console.log(this.filelist);
-
-
-
-
+});
+    
   }
+  getMessageList(id:string){
+    this.chatList.forEach(chat=>{
+      if(chat.appointmentId===id){
+        
+        this.selectedChatRoomId=chat.appointmentId;
+        
+      }
+    })
+    this.messageListRef = this.firestore.collection<Message>(`pdf/${id}/history`, ref => ref.orderBy('time','desc'));
+    this.messageListRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({
+
+          id: c.payload.doc.id, ...c.payload.doc.data()
+        })
+        )),
+    ).subscribe((data: any)=>{
+      this.messageList=data;
+      
+      
+    })
+      
+  }
+  searchPhone(){
+    const searchText=(<HTMLInputElement>document.getElementById("searchText")).value;
+    
+    if(searchText==""){
+      this.ngOnInit();
+    }
+    this.chatList=this.chatListTemp
+    this.chatList=this.chatList.filter(res=>{
+      
+      return String(res.appointmentId).includes(searchText) ||  String(res.doctorName.toLocaleLowerCase()).includes(searchText.toLocaleLowerCase()) ;
+    })
+  }
+ 
+
+
 
 }

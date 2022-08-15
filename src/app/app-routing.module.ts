@@ -1,6 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { BusinessRoleGuard } from './auth/business-role.guard';
+import { SystemRoleGuard } from './auth/system-role.guard';
 
 import { DefaultComponent } from './layouts/default/default.component';
 import { LoginComponent } from './layouts/login/login.component';
@@ -13,6 +15,7 @@ import { ChatListComponent } from './modules/chat-list/chat-list.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DoctorDetailsComponent } from './modules/doctor-details/doctor-details.component';
 import { DoctorListComponent } from './modules/doctor-list/doctor-list.component';
+import { ListedPriceListComponent } from './modules/listed-price-list/listed-price-list.component';
 import { MedicalRecordsHistoryComponent } from './modules/medical-records-history/medical-records-history.component';
 import { MedicineListComponent } from './modules/medicine-list/medicine-list.component';
 import { PatientDetailsComponent } from './modules/patient-details/patient-details.component';
@@ -27,31 +30,33 @@ children:[
   { path:'',component:DashboardComponent },
   { path:'doctor-list',
   children:[
-    {path:'',component:DoctorListComponent},
+    {path:'',component:DoctorListComponent,canActivate:[SystemRoleGuard]},
     {path:':id',component:DoctorDetailsComponent},
     
   ]
 },
 { path:'patient-list',
   children:[
-    {path:'',component:PatientListComponent},
+    {path:'',component:PatientListComponent,canActivate:[SystemRoleGuard]},
     {path:':id',component:PatientDetailsComponent},
     
   ]
 },
-  { path:'medical-records',component:MedicalRecordsHistoryComponent},
-  { path:'medicine-list',component:MedicineListComponent},
+  { path:'medical-records',component:MedicalRecordsHistoryComponent,canActivate:[SystemRoleGuard]},
+  { path:'medicine-list',component:MedicineListComponent,canActivate:[SystemRoleGuard]},
   { path:'appointment-list',
   children:[
-    {path:'',component:AppointmentListComponent},
+    {path:'',component:AppointmentListComponent,canActivate:[SystemRoleGuard]},
     {path:':id',component:AppointmentDetailsComponent}
   ] 
   },
   { path:'change-password',component:ChangePasswordComponent},
-  { path:'chat-list',component:ChatListComponent},
-  { path:'payment',component:PaymentComponent},
-  { path:'report-list',component:ReportListComponent},
-  { path:'appointment-list-details',component:AppointmentListDetailsComponent},
+  { path:'chat-list',component:ChatListComponent,canActivate:[SystemRoleGuard]},
+  { path:'payment',component:PaymentComponent,canActivate:[BusinessRoleGuard]},
+  { path:'listed-price-list',component:ListedPriceListComponent,canActivate:[BusinessRoleGuard]},
+  { path:'report-list',component:ReportListComponent,canActivate:[SystemRoleGuard]},
+  { path:'appointment-list-details',component:AppointmentListDetailsComponent,canActivate:[SystemRoleGuard]},
+  {path: "**",redirectTo:'home',pathMatch:'full'}
   ]
   },
   {path:'login',component:LoginComponent},

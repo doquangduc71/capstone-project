@@ -11,9 +11,11 @@ import { UserService } from 'src/app/services/user.service';
 export class SidebarComponent implements OnInit {
   admin:Admin;
   constructor(private adminService:UserService) { }
-
+  role:string;
   ngOnInit(): void {
     const adminId = Number(localStorage.getItem('userId'));
+    this.role = String(localStorage.getItem('role'));
+    
     this.adminService.getAdminInfor(adminId).subscribe((data: Admin) => {
       this.admin = data;
       

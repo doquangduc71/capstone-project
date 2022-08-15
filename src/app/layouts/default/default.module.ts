@@ -32,6 +32,7 @@ import { PaymentComponent } from 'src/app/modules/payment/payment.component';
 import { ReportListComponent } from 'src/app/modules/report-list/report-list.component';
 import { AppointmentDetailsComponent } from 'src/app/modules/appointment-details/appointment-details.component';
 import { AppointmentListDetailsComponent } from 'src/app/modules/appointment-list-details/appointment-list-details.component';
+import { ListedPriceListComponent } from 'src/app/modules/listed-price-list/listed-price-list.component';
 
 const firebaseConfig ={
   apiKey: "AIzaSyDLGYZDO2FgCKP2fuKbDGUEggosgYYCyPk",
@@ -61,7 +62,7 @@ const firebaseConfig ={
     ReportListComponent,
     AppointmentDetailsComponent,
     AppointmentListDetailsComponent,
-    
+    ListedPriceListComponent,
     
   ],
   imports: [

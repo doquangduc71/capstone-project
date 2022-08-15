@@ -129,3 +129,24 @@ a.disable {
     pointer-events: none;
     cursor: default;
   }
+  .profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+#btnHide{
+    background-color: #eb131e;
+    text-align: center;
+    color: #ebf7eb;
+}
+
+#btnShow{
+    background-color: #2183de   ;
+    text-align: center;
+    color: #ebf7eb;
+}

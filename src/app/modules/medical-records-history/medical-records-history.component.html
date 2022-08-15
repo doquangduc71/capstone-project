@@ -1,55 +1,61 @@
 <div class="container">
-    <div>
-      <h2 style="text-align: center">Danh Sách Bác Sĩ</h2>
-    </div>
-    <div class="container-fluid">
-    
-        <div class=" search  d-flex justify-content-md-end mb-4 text-right float-right">
-         
-          <!-- <div class="col-xl-12 col-md-6 form-group" style="text-align: center">
-            <label for="searchText"></label>
-            <input id="searchText" value="{{searchText}}" name="searchText" placeholder="Tìm kiếm..." class="form-control" type="text">
-          </div> -->
-          
-          
-          
-          <div class="col-xl-5 col-0" style="text-align: left">
-            <br>
-            <button  class="btn btn-success mt-xl-0"><i class="fa fa-search" ></i>Tìm Kiếm</button>
-          </div>
-        </div>
-      
-    </div>
-  
-  
-  
-    <div class="container tab">
-  
-      <table class="table table-hover table-bordered" id="tbl">
-        <thead class="text-dark">
-          <tr class="bg-table-header">
-            <th scope="col" width="5%">STT</th>
-            <th scope="col">Id</th>
-            <th scope="col">Lịch sử</th>
-        
-  
-          </tr>
-        </thead>
-        <tbody style="font-size: 16px">
-          <tr *ngFor="let file of filelist,index as i">
-            <td>{{i + 1}}</td>
-            <td >{{file.id}}</td>
-            <td><div *ngFor="let item of file.listHistory">
-                <a [href]="item" target="_blank">Xem</a>
-            </div>
-            
-            </td>
-          
-          </tr>
-        </tbody>
-      </table>
+  <div class="chat-list mat-elevation-z5">
+    <div class="search-input">
      
+          <input
+            (input)="searchPhone()"
+            
+            placeholder="Tìm kiếm..."
+            id="searchText"
+            type="text"
+            
+            
+          />
+        
+       
     </div>
-  
- 
+
+
+    <div class="overflow-auto chat-list-area">
+      <mat-selection-list [multiple]="false" >
+        <mat-divider></mat-divider>
+        <mat-list-option  *ngFor="let chat of chatList " (click)="getMessageList(chat.appointmentId)" [selected]="selectedChatRoomId===chat.appointmentId?true:false">
+          
+          <p class="chat-title">Mã Ca Khám:&nbsp;<span class="chat-name"> {{ chat.appointmentId }}</span></p>
+          <p class="chat-title">Bác Sĩ:&nbsp;<span class="chat-name"> {{ chat.doctorName }}</span></p>
+          <mat-divider></mat-divider>
+        </mat-list-option>
+        <div *ngIf="chatList.length==0" style="margin-left: 20px;">Không có cuộc hội thoại</div>
+      </mat-selection-list>
+    </div>
+    
+
   </div>
+  <div class="messages mat-elevation-z5">
+    <!-- <div class="messages-header d-flex justify-content-between">
+
+      <h2>{{ reciveName }}</h2>
+      <h2>{{ currentName }}</h2>
+    </div> -->
+    
+      <h2>Lịch Sử Thay Đổi</h2>
+    
+    <mat-divider></mat-divider>
+    <div class="chat-area">
+      <ng-container>
+        <ng-container>
+          <div class=" " 
+            *ngFor="let message of messageList">
+            <div class="chat-bubble" >
+              <span class="chat-time">Thời Gian Thay Đổi: {{
+                message.time | dateDisplay
+                }}</span>
+              <span> - PDF: <a href="{{message.url?message.url:''}}" [ngClass]="message.url==null?'disable':''" target="_blank">Xem</a></span>
+              
+
+            </div>
+           
+          </div>
+        </ng-container>
+      </ng-container>
+</div>

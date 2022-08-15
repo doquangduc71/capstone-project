@@ -7,6 +7,8 @@ import { Admin } from '../model/admin';
 import { Appointment } from '../model/appointment';
 import { Chat, Message } from '../model/chat';
 import { Doctor } from '../model/doctor';
+import { Feedback } from '../model/feedback';
+import { ListedPrice } from '../model/listed-price';
 import { Medicine } from '../model/medicine';
 import { Patient } from '../model/patient';
 
@@ -28,6 +30,10 @@ export class UserService {
     
     return this.httpClient.post(`https://telecare-doxr4lwcja-et.a.run.app/api/v1/auth/loginForAdmin`,formData);
   }
+  // login(formData:FormGroup) {
+    
+  //   return this.httpClient.post(`http://localhost:8080/api/v1/auth/loginForAdmin`,formData);
+  // }
   getMedicineList(index:number,searchText:string):Observable<Medicine[]>{
     return this.httpClient.get<Medicine[]>(`${this.baseUrl}/medicine/getAll?index=${index}&searchText=${searchText}`);
   }
@@ -98,6 +104,25 @@ export class UserService {
   getNumberOfAppointmentDetails(searchText:string):Observable<number>{
     return this.httpClient.get<number>(`${this.baseUrl}/appointmentDetails/numberOfAppointment?searchText=${searchText}`);
   }
+  getFeedbackByAppointmentId(id:number):Observable<Feedback>{
+    return this.httpClient.get<Feedback>(`${this.baseUrl}/feedback/appointmentId=${id}`);
+  }
+  updateStatusFeedback(id:number,status:number){
+    return this.httpClient.put(`${this.baseUrl}/feedback/updateStatus?id=${id}&status=${status}`,id&status);
+  }
+  sendNotificationToAllUser(role:any,money:number,message:any){
+    if(role==="SYSTEM ADMIN"){
+      money=0;
+    }
+    return this.httpClient.post(`${this.baseUrl}/notification/sendAll?role=${role}&money=${money}&message=${message}`,role&money&message);
+  }
+  getListedPriceList(index:number,searchText:string):Observable<ListedPrice[]>{
+    return this.httpClient.get<ListedPrice[]>(`${this.baseUrl}/listedPrice/getAll?index=${index}&searchText=${searchText}`);
+  }
+  getNumberOfListedPrice(searchText:string):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseUrl}/listedPrice/numberOfListedPrice?searchText=${searchText}`);
+  }
+  
 
 
 

@@ -33,7 +33,7 @@
             <th scope="col">Mã GD</th>
             <th scope="col">Số Hóa Đơn</th>
             <!-- <th scope="col">Trace</th> -->
-            <th scope="col">Số Tiền</th>
+            <th scope="col" width="12%">Số Tiền</th>
             <th scope="col">Ngân Hàng</th>
             <th scope="col">Mô Tả</th>
             <th scope="col">Trạng Thái</th>
@@ -42,12 +42,12 @@
         </thead>
         <tbody style="font-size: 16px">
           <tr *ngFor="let payment of payments,index as i">
-            <td>{{i + 1}}</td>
+            <td>{{i + 1 + (indexPagination-1)*10}}</td>
             <td (click)="navigateToAppointmentDetails(payment.appointmentId)">{{payment?.appointmentId}}</td>
             <td>{{payment?.transactionNo}}</td>
             <!-- <td>{{payment?.banktranNo}}</td> -->
             <td>{{payment?.trace}}</td>
-            <td>{{payment?.amount}}</td>
+            <td>{{payment?.amount | number}} VND</td>
             <td>{{payment?.bankcode}}</td>
             <td>{{payment?.description}}</td>
             <td>
