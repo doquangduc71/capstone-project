@@ -14,7 +14,7 @@ export class PieChartComponent implements OnInit {
   chartOptions:{};
   Highcharts = Highcharts;
   ngOnInit(): void {
-    this.dashboard=JSON.parse(localStorage.getItem('dashboard') || '{}');
+    this.dashboard=JSON.parse(sessionStorage.getItem('dashboard') || '{}');
     this.chartOptions={
       chart: {
           plotBackgroundColor: null,
@@ -31,7 +31,8 @@ export class PieChartComponent implements OnInit {
       accessibility: {
           point: {
               valueSuffix: '%'
-          }
+          },
+         
       },
       plotOptions: {
           pie: {
@@ -48,6 +49,7 @@ export class PieChartComponent implements OnInit {
       exporting:{
         enable:true
       },
+      
       series: [{
           name: 'Percent',
           colorByPoint: true,
@@ -65,7 +67,8 @@ export class PieChartComponent implements OnInit {
               y: this.dashboard.numberOfPaidAppointment,
               color:"#f2f20c"
           },]
-      }]
+      }],
+      
   }
   HC_exporting(Highcharts);
   setTimeout(()=>{

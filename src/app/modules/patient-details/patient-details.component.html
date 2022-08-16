@@ -1,19 +1,19 @@
 
 <div class="container emp-profile">
-    <p class="text-dark mb-4" *ngIf="patient.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{patient.reason}}</span></p>
+    <p class="text-dark mb-4" *ngIf="patient?.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{patient?.reason}}</span></p>
     <app-spinner *ngIf="loading$ | async"></app-spinner>
     
         <div class="row">
             
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="{{patient.imageUrl?patient.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
+                    <img src="{{patient?.imageUrl?patient?.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                             <h2 >
-                                {{patient.fullName}}
+                                {{patient?.fullName}}
                             </h2>
                             <!-- <h4>
                                 {{patient?.specialty}}
@@ -28,7 +28,7 @@
                                             <label style="font-weight:500;">Id</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.id}}</p>
+                                            <p>{{patient?.id}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -36,7 +36,7 @@
                                             <label style="font-weight:500;">Tên</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.fullName}}</p>
+                                            <p>{{patient?.fullName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -44,7 +44,7 @@
                                             <label style="font-weight:500;">Ngày Sinh</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.dob}}</p>
+                                            <p>{{patient?.dob}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -62,7 +62,7 @@
                                             <label style="font-weight:500;">Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.email}}</p>
+                                            <p>{{patient?.email}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -70,7 +70,7 @@
                                             <label style="font-weight:500;">Điện Thoại</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.phone}}</p>
+                                            <p>{{patient?.phone}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -78,7 +78,7 @@
                                             <label style="font-weight:500;">Nghề Nghiệp</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.job}}</p>
+                                            <p>{{patient?.job}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -86,7 +86,7 @@
                                             <label style="font-weight:500;">Nơi Làm Việc</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.jobPlace}}</p>
+                                            <p>{{patient?.jobPlace}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -94,7 +94,7 @@
                                             <label style="font-weight:500;">Tên Đường</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.streetName}}</p>
+                                            <p>{{patient?.streetName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -102,7 +102,7 @@
                                             <label style="font-weight:500;">Tên Phường</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.wardName}}</p>
+                                            <p>{{patient?.wardName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -110,7 +110,7 @@
                                             <label style="font-weight:500;">Tên Quận</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.districtName}}</p>
+                                            <p>{{patient?.districtName}}</p>
                                         </div>
                                     </div>
                                     
@@ -119,7 +119,7 @@
                                             <label style="font-weight:500;">Tỉnh/Thành Phố</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.cityName}}</p>
+                                            <p>{{patient?.cityName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -127,7 +127,7 @@
                                             <label style="font-weight:500;">Dân Tộc</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.ethnicName}}</p>
+                                            <p>{{patient?.ethnicName}}</p>
                                         </div>
                                     </div>
                                     
@@ -142,7 +142,7 @@
                                             <label style="font-weight:500;">Cân Nặng</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.weight}} Kg</p>
+                                            <p>{{patient?.weight}} Kg</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -150,7 +150,7 @@
                                             <label style="font-weight:500;">Chiều Cao</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.height}} Cm</p>
+                                            <p>{{patient?.height}} Cm</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -158,7 +158,7 @@
                                             <label style="font-weight:500;">Nhóm Máu</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{patient.bloodType}}</p>
+                                            <p>{{patient?.bloodType}}</p>
                                         </div>
                                     </div>
                                    

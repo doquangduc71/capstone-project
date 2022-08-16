@@ -11,7 +11,7 @@ export class BusinessRoleGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(localStorage.getItem('role')==="BUSINESS ADMIN"){
+      if(sessionStorage.getItem('role')==="BUSINESS ADMIN"){
         return true;
   
       }

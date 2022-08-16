@@ -35,7 +35,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Tổng Doanh Thu Trong Tháng</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard.totalAmountThisMonth | number}} VND</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard?.totalAmountThisMonth | number}} VND</div>
                                         </div>
                                         
                                     </div>
@@ -69,7 +69,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{dashboard.numberOfPatient | number}}</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{dashboard?.numberOfPatient | number}}</div>
                                                 </div>
                                                 
                                             </div>
@@ -88,7 +88,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Tổng Số Bác Sĩ Mới Trong Quý</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard.totalNewDoctorThisQuarter | number}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard?.totalNewDoctorThisQuarter | number}}</div>
                                         </div>
                                        
                                     </div>
@@ -102,7 +102,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Giá Khám Hiện Hành</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard.currentListedPrice | number}} VND</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard?.currentListedPrice | number}} VND</div>
                                         </div>
                                         
                                     </div>
@@ -118,7 +118,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Tổng Số Bác Sĩ Được Hoạt Động</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard.numberOfActiveDoctor | number}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard?.numberOfActiveDoctor | number}}</div>
                                         </div>
                                         
                                     </div>
@@ -136,7 +136,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{dashboard.numberOfActivePatient}}</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{dashboard?.numberOfActivePatient}}</div>
                                                 </div>
                                                 
                                             </div>
@@ -155,7 +155,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Tổng Số Bệnh Nhân Mới Trong Quý</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard.totalNewPatientThisQuarter | number}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard?.totalNewPatientThisQuarter | number}}</div>
                                         </div>
                                        
                                     </div>

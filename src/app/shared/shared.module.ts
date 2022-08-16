@@ -20,6 +20,7 @@ import { SendNotiDialogComponent } from './component/send-noti-dialog/send-noti-
 import { LineChartComponent } from './widgets/line-chart/line-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { PieChartComponent } from './widgets/pie-chart/pie-chart.component';
+import { ErrorPageComponent } from './component/error-page/error-page.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -28,8 +29,10 @@ import { PieChartComponent } from './widgets/pie-chart/pie-chart.component';
     ConfirmDialogComponent,
     SpinnerComponent,
     SendNotiDialogComponent,
+    ErrorPageComponent,
     LineChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -53,8 +56,10 @@ import { PieChartComponent } from './widgets/pie-chart/pie-chart.component';
     FooterComponent,
     SidebarComponent,
     SpinnerComponent,
+    ErrorPageComponent,
     LineChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    
     
   ]
 })

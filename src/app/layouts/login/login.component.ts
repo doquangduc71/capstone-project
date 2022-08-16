@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     })
 
     
-    if (localStorage.getItem('userToken') != null) {
+    if (sessionStorage.getItem('userToken') != null) {
       this.router.navigateByUrl('/home');
     }
   }
@@ -35,10 +35,10 @@ export class LoginComponent implements OnInit {
     
     this.userService.login(this.loginForm.value).subscribe(
       (data: any) => {
-        localStorage.setItem('userToken', data.access_token);
-        localStorage.setItem('userId', data.user_id);
-        localStorage.setItem('role', data.role);
-
+        sessionStorage.setItem('userToken', data.access_token);
+        sessionStorage.setItem('userId', data.user_id);
+        sessionStorage.setItem('role', data.role);
+        
         
          
         

@@ -11,7 +11,7 @@ export class SystemRoleGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(localStorage.getItem('role')==="SYSTEM ADMIN"){
+      if(sessionStorage.getItem('role')==="SYSTEM ADMIN"){
         return true;
   
       }

@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
     
     this.dashboardService.getDashBoardData().subscribe((data:Dashboard)=>{
       this.dashboard=data;
-      localStorage.setItem('dashboard',JSON.stringify(this.dashboard));
+      sessionStorage.setItem('dashboard',JSON.stringify(this.dashboard));
     });
 
   }

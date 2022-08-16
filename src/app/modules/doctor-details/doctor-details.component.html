@@ -1,24 +1,24 @@
 
 <div class="container emp-profile">
-    <p class="text-dark mb-4" *ngIf="doctor?.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{doctor.reason}}</span></p>
+    <p class="text-dark mb-4" *ngIf="doctor?.reason!=null">Lý do tài khoản không được kích hoạt: <span class="text-danger">{{doctor?.reason}}</span></p>
     <app-spinner *ngIf="loading$ | async"></app-spinner>
     
         <div class="row">
             
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="{{doctor.imageUrl?doctor.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
+                    <img src="{{doctor?.imageUrl?doctor?.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                             <h2 >
-                                {{doctor.fullName}}
+                                {{doctor?.fullName}}
                             </h2>
                             <h4>
-                                {{doctor.specialty}}
+                                {{doctor?.specialty}}
                             </h4>
-                            <p class="proile-rating">Đánh Giá : <span>{{doctor.rating}}/5</span></p>
+                            <p class="proile-rating">Đánh Giá : <span>{{doctor?.rating}}/5</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <mat-tab-group dynamicHeight mat-align-tabs="start">
                             <mat-tab label="Thông Tin"> 
@@ -28,7 +28,7 @@
                                             <label style="font-weight:500;">Id</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.id}}</p>
+                                            <p>{{doctor?.id}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -36,7 +36,7 @@
                                             <label style="font-weight:500;">Tên</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.fullName}}</p>
+                                            <p>{{doctor?.fullName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -44,7 +44,7 @@
                                             <label style="font-weight:500;">Ngày Sinh</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.dob}}</p>
+                                            <p>{{doctor?.dob}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -61,7 +61,7 @@
                                             <label style="font-weight:500;">Vị Trí</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.position}}</p>
+                                            <p>{{doctor?.position}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -69,7 +69,7 @@
                                             <label style="font-weight:500;">Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.email}}</p>
+                                            <p>{{doctor?.email}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -77,7 +77,7 @@
                                             <label style="font-weight:500;">Điện Thoại</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.phone}}</p>
+                                            <p>{{doctor?.phone}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -85,7 +85,7 @@
                                             <label style="font-weight:500;">Chuyên Khoa</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.specialty}}</p>
+                                            <p>{{doctor?.specialty}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -93,7 +93,7 @@
                                             <label style="font-weight:500;">Nơi Làm Việc</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.jobPlace}}</p>
+                                            <p>{{doctor?.jobPlace}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -101,7 +101,7 @@
                                             <label style="font-weight:500;">CMND/CCCD Mặt Trước</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><a href="{{doctor.identificationFront?doctor.identificationFront:''}}" [ngClass]="doctor.identificationFront==null?'disable':''" target="_blank">Xem</a></p>
+                                            <p><a href="{{doctor?.identificationFront?doctor?.identificationFront:''}}" [ngClass]="doctor?.identificationFront==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -109,7 +109,7 @@
                                             <label style="font-weight:500;">CMND/CCCD Mặt Sau</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><a href="{{doctor.identificationBack?doctor.identificationBack:''}}" [ngClass]="doctor.identificationBack==null?'disable':''" target="_blank">Xem</a></p>
+                                            <p><a href="{{doctor?.identificationBack?doctor?.identificationBack:''}}" [ngClass]="doctor?.identificationBack==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -117,7 +117,7 @@
                                             <label style="font-weight:500;">Ký Số</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><a href="{{doctor.signature?doctor.signature:''}}" [ngClass]="doctor.signature==null?'disable':''" target="_blank">Xem</a></p>
+                                            <p><a href="{{doctor?.signature?doctor?.signature:''}}" [ngClass]="doctor?.signature==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -125,7 +125,7 @@
                                             <label style="font-weight:500;">Chứng Chỉ Hành Nghề</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><a href="{{doctor.certificate?doctor.certificate:''}}" [ngClass]="doctor.certificate==null?'disable':''" target="_blank">Xem</a></p>
+                                            <p><a href="{{doctor?.certificate?doctor?.certificate:''}}" [ngClass]="doctor?.certificate==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -133,7 +133,7 @@
                                             <label style="font-weight:500;">Hạn Chứng Chỉ</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="date" id="expireDate" name="expireDate" value="{{doctor.expireDateCertificate}}"/>
+                                            <input type="date" id="expireDate" name="expireDate" value="{{doctor?.expireDateCertificate}}"/>
                                         </div>
                                     </div>
                                    
@@ -171,8 +171,8 @@
                                             <label style="font-weight:500;">Thành Tựu</label>
                                         </div>
                                         <div >
-                                            <div class="col-md-13" *ngFor="let a of doctor.listAchievement">
-                                                <p>{{a.achievement}},</p>
+                                            <div class="col-md-13" *ngFor="let a of doctor?.listAchievement">
+                                                <p>{{a?.achievement}},</p>
                                             </div>
                                         </div>
                                         
@@ -184,7 +184,7 @@
                                             <label style="font-weight:500;">Số Ca Khám Hoàn Thành</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.appointmentDoneCount}}</p>
+                                            <p>{{doctor?.appointmentDoneCount}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -192,7 +192,7 @@
                                             <label style="font-weight:500;">Số Bệnh Nhân</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{doctor.patientCount}}</p>
+                                            <p>{{doctor?.patientCount}}</p>
                                         </div>
                                     </div>
                                    

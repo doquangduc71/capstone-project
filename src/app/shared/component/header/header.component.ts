@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   constructor(private userService:UserService,private router: Router, private dialog: DialogService, private notiDialog: MatDialog) { }
   role:string;
   ngOnInit(): void {
-    this.role = String(localStorage.getItem('role'));
+    this.role = String(sessionStorage.getItem('role'));
   }
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
       type: "confirm"
     }).subscribe((confirmed) => {
       if (confirmed) {
-        localStorage.clear();
+        sessionStorage.clear();
         this.router.navigateByUrl('/login');
       }
     });
@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
         this.openAlertDialog('Cần nhập nội dung');
 
       } else if (result != false) {
-        const role = String(localStorage.getItem('role'));
+        const role = String(sessionStorage.getItem('role'));
         this.userService.sendNotificationToAllUser(role,result.price,result.reason).subscribe((data:any)=>{
           this.openAlertDialog(data.message);
         },

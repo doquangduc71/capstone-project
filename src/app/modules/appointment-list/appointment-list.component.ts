@@ -26,7 +26,7 @@ export class AppointmentListComponent implements OnInit {
       this.appointments = data;
     },
     (error:HttpErrorResponse)=>{
-      console.log(error.message);
+      console.log(error?.message);
     });
    
     this.appointmentService.getNumberOfAppointment(this.searchText).subscribe((data: number) => {
@@ -43,7 +43,7 @@ export class AppointmentListComponent implements OnInit {
       
     },
     (error:HttpErrorResponse)=>{
-      console.log(error.message);
+      console.log(error?.message);
     });
   }
   indexPaginationChage(value: number) {

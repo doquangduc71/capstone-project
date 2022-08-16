@@ -21,8 +21,8 @@
         <mat-divider></mat-divider>
         <mat-list-option  *ngFor="let chat of chatList " (click)="getMessageList(chat.chatRoomId)" [selected]="selectedChatRoomId===chat.chatRoomId?true:false">
           
-          <p class="chat-title">Từ: <span class="chat-name"> {{ chat.currentUsername }} - {{ chat.currentPhone }}</span></p>
-          <p class="chat-title">Đến: <span class="chat-name"> {{ chat.receiveUsername }} - {{ chat.receivePhone }}</span></p>
+          <p class="chat-title">Từ: <span class="chat-name"> {{ chat?.currentUsername }} - {{ chat?.currentPhone }}</span></p>
+          <p class="chat-title">Đến: <span class="chat-name"> {{ chat?.receiveUsername }} - {{ chat?.receivePhone }}</span></p>
           <mat-divider></mat-divider>
         </mat-list-option>
         <div *ngIf="chatList.length==0" style="margin-left: 20px;">Không có cuộc hội thoại</div>
@@ -44,17 +44,17 @@
     <div class="chat-area">
       <ng-container>
         <ng-container>
-          <div class="chat-bubble-container" [ngClass]="{ sender: message.currentPhone === currentPhone}"
+          <div class="chat-bubble-container" [ngClass]="{ sender: message?.currentPhone === currentPhone}"
             *ngFor="let message of messageList">
-            <div class="chat-bubble" *ngIf="message.type==='text'">
-              {{ message.text }}
+            <div class="chat-bubble" *ngIf="message?.type==='text'">
+              {{ message?.text }}
               <span class="chat-time">{{
-                message.time | dateDisplay
+                message?.time | dateDisplay
                 }}</span>
 
             </div>
-            <div *ngIf="message.type==='img'">
-              <a [href]="message.text" target="_blank"><img [src]="message.text" alt=""></a>
+            <div *ngIf="message?.type==='img'">
+              <a [href]="message?.text" target="_blank"><img [src]="message?.text" alt=""></a>
             </div>
           </div>
         </ng-container>

@@ -16,7 +16,7 @@ export class LineChartComponent implements OnInit {
   Highcharts = Highcharts;
   ngOnInit(): void {
     this.currentYear = new Date().getFullYear();
-    this.dashboard=JSON.parse(localStorage.getItem('dashboard') || '{}');
+    this.dashboard=JSON.parse(sessionStorage.getItem('dashboard') || '{}');
     
     
     this.chartOptions = {
@@ -25,7 +25,7 @@ export class LineChartComponent implements OnInit {
           text: `Số Tiền Thu Được Trong Năm ${this.currentYear}`
       },
       
-     
+      
   
       yAxis: {
           title: {
@@ -34,9 +34,9 @@ export class LineChartComponent implements OnInit {
       },
   
       xAxis: {
-        //   accessibility: {
-        //     rangeDescription: 'Range: 2010 to 2017'
-        //   },
+          // accessibility: {
+          //   enabled:false
+          // },
           categories: ['Thg1', 'Thg2', 'Thg3', 'Thg4', 'Thg5', 'Thg6', 'Thg7', 'Thg8', 'Thg9', 'Thg10', 'Thg11', 'Thg12'],
       },
   
@@ -65,6 +65,9 @@ export class LineChartComponent implements OnInit {
           data: [this.dashboard.totalAmountJan, this.dashboard.totalAmountFeb, this.dashboard.totalAmountMar, this.dashboard.totalAmountApr, this.dashboard.totalAmountMay, this.dashboard.totalAmountJune, this.dashboard.totalAmountJuly, this.dashboard.totalAmountAug,this.dashboard.totalAmountSep,this.dashboard.totalAmountOct,this.dashboard.totalAmountNov,this.dashboard.totalAmountDec]
       }],
       
+      accessibility: {
+        enabled: true
+      },
       responsive: {
           rules: [{
               condition: {

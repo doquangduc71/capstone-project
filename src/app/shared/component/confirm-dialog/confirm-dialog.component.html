@@ -1,5 +1,5 @@
 <div class="header">
-    <h2 mat-dialog-title>{{data.title}}</h2>
+    <h2 mat-dialog-title>{{data?.title}}</h2>
     <button mat-icon-button [mat-dialog-close]="false">
         <mat-icon>close</mat-icon>
     </button>
@@ -7,21 +7,21 @@
 
 <div mat-dialog-content>
     <p style="word-wrap: break-word;
-    white-space:pre-wrap;">{{data.message}}</p>
+    white-space:pre-wrap;">{{data?.message}}</p>
 </div>
 
-<textarea  id="reason" class="form-control form-control-sm border border-primary" rows="4" *ngIf="data.type=='confirmBan'" name="reason" [(ngModel)]="data.reason" ></textarea>
+<textarea  id="reason" class="form-control form-control-sm border border-primary" rows="4" *ngIf="data?.type=='confirmBan'" name="reason" [(ngModel)]="data.reason" ></textarea>
 <div mat-dialog-actions [align]="'end'">
-    <button *ngIf="data.type=='confirm'" mat-raised-button [mat-dialog-close]="false">
-        {{data.cancelCaption}}
+    <button *ngIf="data?.type=='confirm'" mat-raised-button [mat-dialog-close]="false">
+        {{data?.cancelCaption}}
     </button>
-    <button *ngIf="data.type=='confirm' || data.type=='alert'"  mat-raised-button color="primary" [mat-dialog-close]="true">
-        {{data.confirmCaption}}
+    <button *ngIf="data?.type=='confirm' || data?.type=='alert'"  mat-raised-button color="primary" [mat-dialog-close]="true">
+        {{data?.confirmCaption}}
     </button>
-    <button mat-raised-button *ngIf="data.type=='confirmBan'" [mat-dialog-close]="false">
-        {{data.cancelCaption}}
+    <button mat-raised-button *ngIf="data?.type=='confirmBan'" [mat-dialog-close]="false">
+        {{data?.cancelCaption}}
     </button>
-    <button  mat-raised-button  *ngIf="data.type=='confirmBan'" color="primary" [mat-dialog-close]="data.reason">
-        {{data.confirmCaption}}
+    <button  mat-raised-button  *ngIf="data?.type=='confirmBan'" color="primary" [mat-dialog-close]="data?.reason">
+        {{data?.confirmCaption}}
     </button>
 </div>

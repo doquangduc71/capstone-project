@@ -16,7 +16,7 @@ import { UserService } from 'src/app/services/user.service';
 export class AppointmentDetailsComponent implements OnInit {
 
   loading$ = this.loader.loading$;
-  
+  role:string;
   appointment: Appointment;
   feedBack:Feedback;
   reason: string;
@@ -35,6 +35,7 @@ export class AppointmentDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const appointmentId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.role = String(sessionStorage.getItem('role'));
     this.appointmentService.getAppointmentDetails(appointmentId).subscribe((data: Appointment) => {
       this.appointment = data;
       this.appointment.listSharedMedicalRecord = this.appointment.listSharedMedicalRecord.sort((a,b)=>a.appointmentId-b.appointmentId);

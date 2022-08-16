@@ -13,8 +13,8 @@ export class SidebarComponent implements OnInit {
   constructor(private adminService:UserService) { }
   role:string;
   ngOnInit(): void {
-    const adminId = Number(localStorage.getItem('userId'));
-    this.role = String(localStorage.getItem('role'));
+    const adminId = Number(sessionStorage.getItem('userId'));
+    this.role = String(sessionStorage.getItem('role'));
     
     this.adminService.getAdminInfor(adminId).subscribe((data: Admin) => {
       this.admin = data;

@@ -22,6 +22,7 @@ import { PatientDetailsComponent } from './modules/patient-details/patient-detai
 import { PatientListComponent } from './modules/patient-list/patient-list.component';
 import { PaymentComponent } from './modules/payment/payment.component';
 import { ReportListComponent } from './modules/report-list/report-list.component';
+import { ErrorPageComponent } from './shared/component/error-page/error-page.component';
 
 
 const routes: Routes = [
@@ -56,12 +57,13 @@ children:[
   { path:'listed-price-list',component:ListedPriceListComponent,canActivate:[BusinessRoleGuard]},
   { path:'report-list',component:ReportListComponent,canActivate:[SystemRoleGuard]},
   { path:'appointment-list-details',component:AppointmentListDetailsComponent,canActivate:[SystemRoleGuard]},
-  {path: "**",redirectTo:'home',pathMatch:'full'}
+  { path:'error',component:ErrorPageComponent},
+  {path: "**",redirectTo:'home/error',pathMatch:'full'}
   ]
   },
   {path:'login',component:LoginComponent},
   {path: "",redirectTo:'login',pathMatch:'full'},
-  {path: "**",redirectTo:'login',pathMatch:'full'}
+  {path: "**",redirectTo:'home/error',pathMatch:'full'}
 
 
   

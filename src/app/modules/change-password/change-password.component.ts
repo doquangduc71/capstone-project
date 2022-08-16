@@ -40,7 +40,7 @@ export class ChangePasswordComponent implements OnInit {
     
     const oldPassword = this.changePasswordForm.controls['oldPassword'].value;
     const password = this.changePasswordForm.controls['newPassword'].value;
-     const id = (Number)(localStorage.getItem('userId'));
+     const id = (Number)(sessionStorage.getItem('userId'));
     this.userService.changePassword(id,oldPassword,password).subscribe((data:any)=>{
       this.changePasswordSuccess=true;
       this.changePasswordFail=false;
