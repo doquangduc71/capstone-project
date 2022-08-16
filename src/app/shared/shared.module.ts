@@ -17,6 +17,9 @@ import { SpinnerComponent } from './component/spinner/spinner.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { SendNotiDialogComponent } from './component/send-noti-dialog/send-noti-dialog.component';
+import { LineChartComponent } from './widgets/line-chart/line-chart.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { PieChartComponent } from './widgets/pie-chart/pie-chart.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -24,7 +27,9 @@ import { SendNotiDialogComponent } from './component/send-noti-dialog/send-noti-
     SidebarComponent,
     ConfirmDialogComponent,
     SpinnerComponent,
-    SendNotiDialogComponent
+    SendNotiDialogComponent,
+    LineChartComponent,
+    PieChartComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +43,8 @@ import { SendNotiDialogComponent } from './component/send-noti-dialog/send-noti-
     RouterModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    HighchartsChartModule
 
     
   ],
@@ -46,7 +52,9 @@ import { SendNotiDialogComponent } from './component/send-noti-dialog/send-noti-
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    LineChartComponent,
+    PieChartComponent
     
   ]
 })

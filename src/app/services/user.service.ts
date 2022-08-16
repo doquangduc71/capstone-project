@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Admin } from '../model/admin';
 import { Appointment } from '../model/appointment';
 import { Chat, Message } from '../model/chat';
+import { Dashboard } from '../model/dashboard';
 import { Doctor } from '../model/doctor';
 import { Feedback } from '../model/feedback';
 import { ListedPrice } from '../model/listed-price';
@@ -121,6 +122,9 @@ export class UserService {
   }
   getNumberOfListedPrice(searchText:string):Observable<number>{
     return this.httpClient.get<number>(`${this.baseUrl}/listedPrice/numberOfListedPrice?searchText=${searchText}`);
+  }
+  getDashBoardData():Observable<Dashboard>{
+    return this.httpClient.get<Dashboard>(`${this.baseUrl}/dashboard`);
   }
   
 

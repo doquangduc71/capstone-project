@@ -41,7 +41,7 @@ export class MedicalRecordsHistoryComponent implements OnInit {
 });
     
   }
-  getMessageList(id:string){
+  getMedicalRecordChange(id:string){
     this.chatList.forEach(chat=>{
       if(chat.appointmentId===id){
         

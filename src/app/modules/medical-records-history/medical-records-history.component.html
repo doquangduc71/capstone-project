@@ -19,7 +19,7 @@
     <div class="overflow-auto chat-list-area">
       <mat-selection-list [multiple]="false" >
         <mat-divider></mat-divider>
-        <mat-list-option  *ngFor="let chat of chatList " (click)="getMessageList(chat.appointmentId)" [selected]="selectedChatRoomId===chat.appointmentId?true:false">
+        <mat-list-option  *ngFor="let chat of chatList " (click)="getMedicalRecordChange(chat.appointmentId)" [selected]="selectedChatRoomId===chat.appointmentId?true:false">
           
           <p class="chat-title">Mã Ca Khám:&nbsp;<span class="chat-name"> {{ chat.appointmentId }}</span></p>
           <p class="chat-title">Bác Sĩ:&nbsp;<span class="chat-name"> {{ chat.doctorName }}</span></p>
