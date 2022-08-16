@@ -24,7 +24,7 @@ export class UserService {
   private baseUrl = "https://telecare-doxr4lwcja-et.a.run.app/api/v1/admin";
   
   constructor(private httpClient: HttpClient) { 
-    this.header = new Headers( {'Content-Type' : 'application/context'})
+   
     
   }
   login(formData:FormGroup) {
