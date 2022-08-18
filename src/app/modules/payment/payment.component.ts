@@ -14,8 +14,9 @@ export class PaymentComponent implements OnInit {
   defaultStatus = "";
   status=[
    
-    {id:0,name:'Chưa Thanh Toán',value:'In-Active'},
+    {id:0,name:'Đang Thanh Toán',value:'In-Active'},
     {id:1,name:'Đã Thanh Toán',value:'Active'},
+    {id:2,name:'Lỗi',value:'Ban'},
 
   ]
   searchText:string="";
