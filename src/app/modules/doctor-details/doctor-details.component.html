@@ -10,7 +10,7 @@
                     <img src="{{doctor?.imageUrl?doctor?.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="profile-head">
                             <h2 >
                                 {{doctor?.fullName}}
@@ -20,119 +20,119 @@
                             </h4>
                             <p class="proile-rating">Đánh Giá : <span>{{doctor?.rating}}/5</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <mat-tab-group dynamicHeight mat-align-tabs="start">
+                        <mat-tab-group dynamicHeight mat-align-tabs="start" >
                             <mat-tab label="Thông Tin"> 
                                 <div class="tab-pane fade show active mt-4" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Id</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.id}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Tên</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.fullName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Ngày Sinh</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.dob}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Giới Tính</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p *ngIf="doctor?.gender==1;else elseBlock">Nữ</p>
                                             <ng-template #elseBlock><p>Nam</p></ng-template>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Vị Trí</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.position}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Email</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.email}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Điện Thoại</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.phone}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Chuyên Khoa</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.specialty}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Nơi Làm Việc</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.jobPlace}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">CMND/CCCD Mặt Trước</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p><a href="{{doctor?.identificationFront?doctor?.identificationFront:''}}" [ngClass]="doctor?.identificationFront==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">CMND/CCCD Mặt Sau</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p><a href="{{doctor?.identificationBack?doctor?.identificationBack:''}}" [ngClass]="doctor?.identificationBack==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Ký Số</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p><a href="{{doctor?.signature?doctor?.signature:''}}" [ngClass]="doctor?.signature==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Chứng Chỉ Hành Nghề</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p><a href="{{doctor?.certificate?doctor?.certificate:''}}" [ngClass]="doctor?.certificate==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Hạn Chứng Chỉ</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <input type="date" id="expireDate" name="expireDate" value="{{doctor?.expireDateCertificate}}"/>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                             <mat-tab label="Hoạt Động"> 
                                 <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Chuyên Khoa</label>
                                         </div>
                                         <div >
@@ -155,19 +155,19 @@
                                     </div>
                                     <br>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Kinh Nghiệm</label>
                                         </div>
                                         <div >
                                             <div class="col-md-13" *ngFor="let e of doctor?.listExperience">
-                                                <p>{{e?.experience}},</p>
+                                                <p >{{e?.experience}},</p>
                                             </div>
                                         </div>
                                         
                                     </div>
                                     <br>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Thành Tựu</label>
                                         </div>
                                         <div >
@@ -180,18 +180,18 @@
                                     
                                     
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Số Ca Khám Hoàn Thành</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.appointmentDoneCount}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Số Bệnh Nhân</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{doctor?.patientCount}}</p>
                                         </div>
                                     </div>
