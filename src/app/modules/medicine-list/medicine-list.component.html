@@ -46,7 +46,7 @@
         <td>{{vaccine?.yearOfReceipts}}</td>
         <td >{{vaccine?.numberOfReceipts}}</td>
         <td >{{vaccine?.registrationNumber}}</td>
-        <td  ><div *ngFor="let sta of status">
+        <td  (click)="changeStatus(vaccine.id,vaccine.status)"><div *ngFor="let sta of status">
           <label *ngIf="vaccine?.status==sta?.id" id="lbl{{sta?.value}}">{{sta?.name}}</label>
       </div>
     </td>

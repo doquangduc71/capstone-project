@@ -11,4 +11,5 @@ export class Payment {
         installment: string;
         status: number;
         amount: string;
+        responseCode:string;
 }

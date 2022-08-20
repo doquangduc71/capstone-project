@@ -1,5 +1,5 @@
 export class Medicine {
-    id:string;
+    id:number;
     numberOfReceipts:string;
     yearOfReceipts:number;
     name:string;

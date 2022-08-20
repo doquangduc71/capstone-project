@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Medicine } from 'src/app/model/medicine';
+import { DialogService } from 'src/app/services/dialog.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class MedicineListComponent implements OnInit {
   ]
   medicines: Medicine[] = [];
   numberOfMedicine:number;
-  constructor(private medicineService: UserService) { }
+  constructor(private medicineService: UserService,private dialog: DialogService) { }
 
   ngOnInit(): void {
     this.medicineService.getMedicineList(0,this.searchText).subscribe((data: Medicine[]) => {
@@ -120,6 +121,50 @@ export class MedicineListComponent implements OnInit {
     this.searchText=(<HTMLInputElement>document.getElementById("searchText")).value;
     
     this.ngOnInit();
+  }
+  changeStatus(id:number,statusId:number){
+    this.dialog.confirmDialog({
+      title: 'Thay đổi trạng thái',
+      message: 'Bạn muốn thực hiện hành động này chứ?',
+      confirmCaption: 'Xác nhận',
+      cancelCaption: 'Hủy',
+      reason: '',
+      type: "confirm"
+    }).subscribe((confirmed) => {
+      if (confirmed) {
+        if(statusId==0){
+          statusId=1;
+        }else if(statusId==1){
+          statusId=0;
+        }
+        this.medicineService.updateStatusMedicine(id,statusId).subscribe((data: any) => {
+      
+          
+          this.ngOnInit();
+          this.openAlertDialog(data.message);
+          
+        },
+          (error: HttpErrorResponse) => {
+            console.log(error?.error.message);
+    
+    
+          });
+      }
+    });
+
+  }
+  openAlertDialog(message: string) {
+    this.dialog.confirmDialog({
+      title: 'Nội Dung Mô Tả',
+      message: message,
+      confirmCaption: 'OK',
+      cancelCaption: 'Hủy',
+      reason: '',
+      type: "alert",
+      
+    }).subscribe((ok) => {
+      return;
+    });
   }
 
 }

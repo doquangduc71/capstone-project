@@ -126,6 +126,9 @@ export class UserService {
   getDashBoardData():Observable<Dashboard>{
     return this.httpClient.get<Dashboard>(`${this.baseUrl}/dashboard`);
   }
+  updateStatusMedicine(id:number,status:number){
+    return this.httpClient.put(`${this.baseUrl}/medicine/updateStatus?id=${id}&status=${status}`,id&status);
+  }
   
 
 
