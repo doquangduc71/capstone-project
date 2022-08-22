@@ -30,6 +30,7 @@ export class DoctorDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const doctorId = Number(this.route.snapshot.paramMap.get('id'));
+    
     this.doctorService.getDoctorById(doctorId).subscribe((data: Doctor) => {
       this.doctor = data;
 
@@ -43,6 +44,7 @@ export class DoctorDetailsComponent implements OnInit {
 
   }
   changeStatus() {
+    
     this.expireDate = (<HTMLInputElement>document.getElementById("expireDate")).value;
     if (this.expireDate == "") {
       this.openAlertDialog('Cần thiết lập ngày hết hạn chứng chỉ');
@@ -171,13 +173,19 @@ export class DoctorDetailsComponent implements OnInit {
     });
   }
   setExpireDate(){
+    
     if(this.doctor.isActive==1){
        this.expireDate = (<HTMLInputElement>document.getElementById("expireDate")).value;
-      this.updateStatusDoctor(this.doctor.isActive,this.doctor.id,"");
-      console.log(this.expireDate);
+      //this.updateStatusDoctor(this.doctor.isActive,this.doctor.id,"");
+      //console.log(this.expireDate);
     }else{
       return;
     }
+  }
+  setRangeDate(){
+    var today = new Date().toISOString().split('T')[0];
+    console.log(today);
+    document.getElementsByName("expireDate")[0].setAttribute('min', today);
   }
 
 }

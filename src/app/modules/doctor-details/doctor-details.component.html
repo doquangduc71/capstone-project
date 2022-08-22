@@ -133,7 +133,7 @@
                                             <label style="font-weight:500;">Hạn Chứng Chỉ</label>
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="date" (change)="setExpireDate()" id="expireDate" name="expireDate" value="{{doctor?.expireDateCertificate}}"/>
+                                            <input type="date" (change)="setExpireDate()" (click)="setRangeDate()" id="expireDate" name="expireDate" value="{{doctor?.expireDateCertificate}}"/>
                                         </div>
                                     </div>
                                    
