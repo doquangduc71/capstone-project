@@ -170,5 +170,14 @@ export class DoctorDetailsComponent implements OnInit {
       return;
     });
   }
+  setExpireDate(){
+    if(this.doctor.isActive==1){
+       this.expireDate = (<HTMLInputElement>document.getElementById("expireDate")).value;
+      this.updateStatusDoctor(this.doctor.isActive,this.doctor.id,"");
+      console.log(this.expireDate);
+    }else{
+      return;
+    }
+  }
 
 }
