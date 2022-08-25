@@ -85,8 +85,11 @@
                                             <label style="font-weight:500;">Chuyên Khoa</label>
                                         </div>
                                         <div class="col-md-5">
-                                            <p>{{doctor?.specialty}}</p>
+                                            <div class="col-md-13" *ngFor="let s of doctor?.listSpecialty">
+                                                <p>{{s?.name}},</p>
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-5">
@@ -142,18 +145,7 @@
                             </mat-tab>
                             <mat-tab label="Hoạt Động"> 
                                 <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <label style="font-weight:500;">Chuyên Khoa</label>
-                                        </div>
-                                        <div >
-                                            <div class="col-md-13" *ngFor="let s of doctor?.listSpecialty">
-                                                <p>{{s?.name}},</p>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <br>
+                                    
                                     <div class="row">
                                         <div class="col-md-5">
                                             <label style="font-weight:500;">Kinh Nghiệm</label>
