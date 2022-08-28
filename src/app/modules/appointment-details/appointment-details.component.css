@@ -103,7 +103,7 @@ label{
     font-size: 16px;
 }
 mat-tab-group{
-    width: 600px;
+    min-width: 700px !important;
 }
 #btnActive{
     background-color: #13ed1e;

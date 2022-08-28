@@ -20,4 +20,7 @@ export class Appointment {
         listSharedMedicalRecord:MedicalRecord[];
         relativeName: string;
         appointmentStatus:string;
+        refuseFillReason:string;
+        cancelReason:string;
+        cancelPerson:string;
 }

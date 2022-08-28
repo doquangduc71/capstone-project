@@ -10,7 +10,7 @@
                     <!-- <img src="{{appointment.imageUrl?appointment.imageUrl:'assets/img/profile-image.png'}}" class="rounded" alt=""/> -->
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="profile-head">
                             <h2 >
                                 Thông Tin Chi Tiết Ca Khám
@@ -24,98 +24,122 @@
                             <mat-tab label="Thông Tin"> 
                                 <div class="tab-pane fade show active mt-4" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Id</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{appointment?.id}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Ca Khám</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{appointment?.startAt?.substring(0,5)}}-{{appointment?.endAt?.substring(0,5)}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Ngày Khám</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{appointment?.time}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Bệnh Nhân</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p (click)="navigateToPatientProfile(appointment.patientId)">{{appointment?.patientName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Bác Sĩ</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p (click)="navigateToDoctorProfile(appointment.doctorId)">{{appointment?.doctorName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Người Thân Bệnh Nhân</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{appointment?.relativeName}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Mã Đơn Thuốc</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{appointment?.prescriptionTrace}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Đường Dẫn Đơn Thuốc</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p><a href="{{appointment?.prescriptionUrl?appointment?.prescriptionUrl:''}}" [ngClass]="appointment?.prescriptionUrl==null?'disable':''" target="_blank">Xem</a><p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Mã Bệnh Án</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{appointment?.medicalRecordTrace}}</p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Đường Dẫn Bệnh Án</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p><a href="{{appointment?.medicalRecordUrl?appointment?.medicalRecordUrl:''}}" [ngClass]="appointment?.medicalRecordUrl==null?'disable':''" target="_blank">Xem</a></p>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Trạng Thái Ca Khám</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{appointment?.appointmentStatus}}</p>
                                         </div>
                                     </div>
+                                    <div class="row mt-2" *ngIf="appointment?.cancelReason!=null">
+                                        <div class="col-md-5">
+                                            <label style="font-weight:500;">Lý Do Hủy</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <p>{{appointment?.cancelReason}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2" *ngIf="appointment?.cancelReason!=null">
+                                        <div class="col-md-5">
+                                            <label style="font-weight:500;">Người Hủy</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <p>{{appointment?.cancelPerson}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2" *ngIf="appointment?.refuseFillReason!=null">
+                                        <div class="col-md-5">
+                                            <label style="font-weight:500;">Lý Do Không Điền Bệnh Án</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <p>{{appointment?.refuseFillReason}}</p>
+                                        </div>
+                                    </div>
                                     <div class="row mt-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Trạng Thái Thanh Toán</label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p>{{appointment?.paymentStatus}}</p>
                                         </div>
                                     </div>
@@ -129,7 +153,7 @@
                             <mat-tab label="Được Chia Sẻ"> 
                                 <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <label style="font-weight:500;">Bệnh Án Và Đơn Thuốc Chia Sẻ</label>
                                         </div>
                                         <div class="col-md-13">
