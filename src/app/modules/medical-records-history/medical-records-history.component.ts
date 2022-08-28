@@ -25,7 +25,7 @@ export class MedicalRecordsHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.chatListsRef = this.firestore.collection<ListMedicalRecordHistory>('pdf');
+    this.chatListsRef = this.firestore.collection<ListMedicalRecordHistory>('pdf', ref => ref.orderBy('appointmentId','desc'));
     this.chatListsRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({

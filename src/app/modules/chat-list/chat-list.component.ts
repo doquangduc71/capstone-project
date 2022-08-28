@@ -60,7 +60,7 @@ export class ChatListComponent implements OnInit {
         
       }
     })
-    this.messageListRef = this.firestore.collection<Message>(`chatRooms/${id}/message`);
+    this.messageListRef = this.firestore.collection<Message>(`chatRooms/${id}/message`, ref => ref.orderBy('time','asc'));
     this.messageListRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({

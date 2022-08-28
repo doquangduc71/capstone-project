@@ -21,8 +21,8 @@
         <mat-divider></mat-divider>
         <mat-list-option  *ngFor="let chat of chatList " (click)="getMessageList(chat.chatRoomId)" [selected]="selectedChatRoomId===chat.chatRoomId?true:false">
           
-          <p class="chat-title">Từ: <span class="chat-name"> {{ chat?.currentUsername }} - {{ chat?.currentPhone }}</span></p>
-          <p class="chat-title">Đến: <span class="chat-name"> {{ chat?.receiveUsername }} - {{ chat?.receivePhone }}</span></p>
+          <p class="chat-title">BN: <span class="chat-name"> {{ chat?.currentUsername }} - {{ chat?.currentPhone }}</span></p>
+          <p class="chat-title">BS: <span class="chat-name"> {{ chat?.receiveUsername }} - {{ chat?.receivePhone }}</span></p>
           <mat-divider></mat-divider>
         </mat-list-option>
         <div *ngIf="chatList.length==0" style="margin-left: 20px;">Không có cuộc hội thoại</div>
