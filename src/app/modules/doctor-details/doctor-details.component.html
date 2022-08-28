@@ -18,7 +18,7 @@
                             <h4>
                                 {{doctor?.specialty}}
                             </h4>
-                            <p class="proile-rating">Đánh Giá : <span>{{doctor?.rating}}/5</span></p>
+                            <p class="proile-rating">Đánh Giá : <span>{{doctor?.rating | number:'1.0-1'}}/5</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <mat-tab-group dynamicHeight mat-align-tabs="start" >
                             <mat-tab label="Thông Tin"> 
@@ -146,7 +146,7 @@
                             <mat-tab label="Hoạt Động"> 
                                 <div class="tab-pane fade show mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-5">
                                             <label style="font-weight:500;">Kinh Nghiệm</label>
                                         </div>
@@ -157,8 +157,8 @@
                                         </div>
                                         
                                     </div>
-                                    <br>
-                                    <div class="row">
+                                    
+                                    <div class="row mt-2">
                                         <div class="col-md-5">
                                             <label style="font-weight:500;">Thành Tựu</label>
                                         </div>
@@ -171,7 +171,7 @@
                                     </div>
                                     
                                     
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-5">
                                             <label style="font-weight:500;">Số Ca Khám Hoàn Thành</label>
                                         </div>
@@ -179,7 +179,7 @@
                                             <p>{{doctor?.appointmentDoneCount}}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-md-5">
                                             <label style="font-weight:500;">Số Bệnh Nhân</label>
                                         </div>
